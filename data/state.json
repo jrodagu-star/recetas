@@ -1,0 +1,615 @@
+{
+  "recipes": [
+    {
+      "name": "POLLO CREMOSO CON YOGUR AL CURRY",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "250-300 g de pechuga de pollo cocinada",
+        "1/2 aguacate",
+        "1/2 pimiento verde",
+        "1/2 pimiento rojo pequeño picante o dulce",
+        "1 ramita de apio",
+        "1/2 cebolla roja o chalota",
+        "200-250 ml de yogur natural tipo griego",
+        "1 cucharadita de mostaza de Dijon",
+        "1/2 cucharadita de salsa Worcestershire",
+        "zumo de 1/2 lima o limón",
+        "1/4 cucharadita de ajo granulado",
+        "1 cucharadita de mezcla de especias para curry",
+        "1 cucharadita de cúrcuma",
+        "1/2 cucharadita de comino",
+        "1 pizca de pimentón picante",
+        "perejil fresco picado",
+        "aceite de oliva virgen extra, pimienta negra y sal al gusto."
+      ],
+      "preparation": [
+        "Lavar y picar, retirando las semillas, los pimientos. Picar la cebolla roja o chalota, picar y aplastar el aguacate y picar el apio, en piezas muy finas. Mezclar con el pollo añadiendo un puñado de perejil fresco picado.",
+        "Colocar el yogur en un cuenco aparte y agregar todas las especias, mostaza, zumo de lima o limón, la salsa Worcestershire, un poco de aceite de oliva (opcional), pimienta negra y sal al gusto. Mezclar muy bien y comprobar el punto de sal. Incorporar la salsa a los demás ingredientes y mezclar hasta tener una combinación homogénea"
+      ],
+      "images": [
+        "image1.png"
+      ],
+      "web": "WEB Pollo cremoso con Yogur. Receta saludable (vitonica.com)",
+      "tags": [
+        "plato-principal",
+        "pollo",
+        "saludable"
+      ],
+      "id": "pollo-cremoso-con-yogur-al-curry",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "MERLUZA EN SALSA VERDE",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "400 gr de lomos de merluza sin espinas (unos 4 o 5)",
+        "2 dientes de ajo picaditos",
+        "2 cucharadas de aceite de oliva virgen extra",
+        "1 cucharada sopera de harina (unos 20 gr)",
+        "100 ml de vino blanco",
+        "300 ml de caldo de pescado",
+        "20 gr de perejil fresco picadito",
+        "120 gr de guisantes en lata escurridos",
+        "Sal y pimienta negra al gusto"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": "WEB Merluza en Salsa Verde | Receta de Pescado MUY Fácil y Deliciosa (youtube.com)",
+      "tags": [
+        "pescado",
+        "plato-principal",
+        "rapido"
+      ],
+      "id": "merluza-en-salsa-verde",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "HUMMUS",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "Garbanzos cocidos 400 g",
+        "Aceite de oliva virgen extra 70 g",
+        "Semillas de sésamo tostado 60 g",
+        "Agua 50 ml",
+        "Diente de ajo 1",
+        "Sal (aprox)5 g",
+        "Zumo de limón 30 g",
+        "Comino molido (aprox)5 g",
+        "Yogur natural opcional 100 g"
+      ],
+      "preparation": [
+        "Lavamos bien los garbanzos para retirar el líquido en el que vienen sumergidos en la conserva. Escurrimos e introducimos en el vaso de un robot de cocina. Añadimos el diente de ajo pelado (si retiramos el germen queda más suave), el sésamo, el comino, la sal, el zumo de limón y el agua.",
+        "Trituramos hasta obtener una masa semi homogénea antes de incorporar el aceite de oliva virgen extra. Continuamos triturando unos minutos o hasta obtener una mezcla cremosa. Podemos aportar más cremosidad al hummus de garbanzos si añadimos un poco de yogur natural. Muchos restaurantes libaneses lo utilizan y queda estupendo, pero esto es completamente opcional.",
+        "En el momento de servir rociamos con un chorrito de aceite de oliva virgen extra, semillas variadas y pimentón dulce. Otros toppings que podemos añadir son aceitunas o perejil picado. Al gusto. Servir con panecillos o palitos de zanahoria."
+      ],
+      "images": [
+        "image2.jpeg"
+      ],
+      "web": "WEB: directo al paladar",
+      "tags": [
+        "plato-principal",
+        "vegetariano"
+      ],
+      "id": "hummus",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "SALMON A LA NARANJA",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "1 lomo de salmón",
+        "1 diente de ajo",
+        "1 rama de romero fresco",
+        "75 ml de caldo de verduras",
+        "Media naranja",
+        "5 ml de zumo de limón",
+        "5 ml de miel",
+        "5 g de harina refinada de maíz (maicena)",
+        "Aceite de oliva",
+        "Pimenta negra",
+        "sal"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": "(1025) SALMÓN A LA NARANJA y MIEL, una RECETA FÁCIL Y RÁPIDA que parece de restaurante de lujo - YouTube",
+      "tags": [
+        "pescado",
+        "plato-principal",
+        "rapido"
+      ],
+      "id": "salmon-a-la-naranja",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "BERENJENA PARMESANA",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "Tomate 800 g",
+        "Berenjena 3",
+        "Dientes de ajo 2",
+        "Aceite de oliva virgen extra 60 ml",
+        "Tomate frito casero 50 ml",
+        "Queso Parmesano 90 g",
+        "Huevos 1",
+        "Orégano seco",
+        "Albahaca",
+        "Sal y pimienta al gusto"
+      ],
+      "preparation": [
+        "Lavar y cortar las berenjenas longitudinalmente. Ponerlas en una rejilla encima de una fuente, espolvorearles sal y dejarlas durante quince minutos para que suden. Cuando pase el tiempo lavarlas y secarlas bien con un papel de cocina.",
+        "Mientras, lavar y pelar los tomates, cortarlos en cuadraditos. Poner una sartén al fuego con cuatro cucharadas de aceite y sofreír los ajos con cuidado de que no se quemen. Añadir los tomates y sofreírlos durante unos ocho minutos con un poquito de sal, añadir seguidamente las dos cucharadas de tomate frito. Precalentar el horno a 180 grados.",
+        "Calentar una plancha pincelada con un poco de aceite y pasar por ella las lonchas de berenjena hasta que se hagan un poco. Ir colocándolas en una fuente refractaria, añadir una capa de salsa de tomate, espolvorear un poco del queso, añadir orégano y unas hojas de albahaca. Ir repitiendo esta operación hasta acabar con los ingredientes, teniendo cuidado de que nos quede una capa de berenjenas para el final. Batir el huevo y añadirlo por encima, espolvorear Parmesano y unas pocas de hierbas aromáticas y hornear durante veinte minutos o hasta que veamos la cubierta dorada."
+      ],
+      "images": [
+        "image3.png"
+      ],
+      "web": null,
+      "tags": [
+        "horno",
+        "huevo",
+        "plato-principal",
+        "vegetariano"
+      ],
+      "id": "berenjena-parmesana",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "TORTILLA PATATAS",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "Patatas 1 Kg",
+        "Huevos 6",
+        "Cebolla",
+        "Sal, aceite."
+      ],
+      "preparation": [
+        "Cortar patata laminas y poner en remojo en agua fría.",
+        "Aceite sarten caliente 8/10.",
+        "Poner patata bien escurrida añadiendo poco en poco. 5 min sin tocar con fuego alto. Pasados 5-10 min remover. Cuando este patata blanda retirar aceite. Subir fuego al 8 y salar. Ir tostando la patata fuego fuerte.",
+        "Huevos. 1 Kg patata/6-8 huevos medianos. Tº ambiente. Remover.",
+        "Cebolla pochar a parte.",
+        "Añadir las patatas al bol de los huevos + 2 yemas crudas + cebolla.",
+        "5-10min reposo.",
+        "sartén caliente 6/10. Pelin aceite para que no se pegue."
+      ],
+      "images": [],
+      "web": "https://www.youtube.com/shorts/KS8M0xAna7s",
+      "tags": [
+        "huevo",
+        "plato-principal",
+        "rapido"
+      ],
+      "id": "tortilla-patatas",
+      "hasPreparation": true,
+      "hasImage": false
+    },
+    {
+      "name": "MAYONESA CON HUEVOS COCIDOS",
+      "category": "SALSAS",
+      "tags": [
+        "rapido",
+        "huevo",
+        "sin-lactosa"
+      ],
+      "images": [],
+      "ingredients": [
+        "4 huevos cocidos",
+        "75 ml de agua",
+        "50 ml de aceite",
+        "Jugo de ½ limón",
+        "½ cucharadita de sal o al gusto",
+        "OPCIONAL: 1 diente de ajo",
+        "OPCIONAL: ½ cucharadita de mostaza"
+      ],
+      "preparation": [],
+      "web": "WEB MAYONESA CON HUEVO COCIDO Y SIN LECHE DELICIOSA Y MUY FÁCIL (youtube.com)",
+      "id": "mayonesa-con-huevos-cocidos",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "HABAS ESPARRAGADAS CON HUEVO",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "Habas peladas. 400 g",
+        "Cebolla ½",
+        "Ajo 4",
+        "Pan 2 rebanadas medias",
+        "Comino grano",
+        "Pimentón 1 cuchadita",
+        "Huevos 2",
+        "Sal, Aceite",
+        "Agua"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": null,
+      "tags": [
+        "huevo",
+        "plato-principal"
+      ],
+      "id": "habas-esparragadas-con-huevo",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "HUEVOS AL HORNO",
+      "category": "PLATOS PRINCIPALES",
+      "ingredients": [
+        "2 huevos",
+        "1 diente de ajo",
+        "1 cebolla",
+        "Medio pimiento verde",
+        "Medio pimiento rojo",
+        "100 ml de tomate frito o tomate triturado",
+        "Chorizo, jamón o similar en taquitos",
+        "Guisantes",
+        "Sal",
+        "1.- Comenzamos haciendo un buen sofrito a fuego lento de ajo, cebolla y pimientos. Lo pochamos durante unos 20 minutos.",
+        "2.- Pasado ese tiempo incorporamos 2 o 3 tomates en dados o podemos ponerle tomate frito, eso depende de lo que tengamos a mano. Recuerda que estos platos son para salir del paso.",
+        "3.- Una vez tengamos el sofrito hecho yo lo paso a una cazuela de barro y en ella pongo chorizo picado y guisantes.",
+        "4.- Le ponemos ahora los dos huevos, un poco de sal y dejamos cocinar en el horno hasta que se cuaje durante unos 6 o 7 minutos. Servimos con pan y a disfrutar."
+      ],
+      "preparation": [],
+      "images": [
+        "image4.jpeg"
+      ],
+      "web": null,
+      "tags": [
+        "horno",
+        "huevo",
+        "plato-principal",
+        "vegetariano"
+      ],
+      "id": "huevos-al-horno",
+      "hasPreparation": false,
+      "hasImage": true
+    },
+    {
+      "name": "CREMA DE GUISANTES",
+      "category": "CREMAS",
+      "ingredients": [
+        "Ajo 1",
+        "Cebolla 1",
+        "Puerro 1",
+        "Sal",
+        "Guisantes 1 Kg congelado",
+        "Pimienta blanca",
+        "Gengibre",
+        "Albahaca",
+        "Perejil fresco",
+        "Aguacate",
+        "Aceite oliva"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": null,
+      "tags": [
+        "crema",
+        "vegetariano"
+      ],
+      "id": "crema-de-guisantes",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "CREMA FRIA GUISANTES",
+      "category": "CREMAS",
+      "ingredients": [
+        "Cebolla 1",
+        "Aceite oliva",
+        "Mantequilla 14 g",
+        "Guisantes 400 g",
+        "Sal",
+        "Patata 200 g",
+        "Caldo verduras 850 ml",
+        "Menta o hierbabuena fresca 10 hojas"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": null,
+      "tags": [
+        "crema",
+        "vegetariano"
+      ],
+      "id": "crema-fria-guisantes",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "VICHYSOISSE CALABACIN",
+      "category": "CREMAS",
+      "ingredients": [
+        "Calabacines 3",
+        "Cebollas 2",
+        "Patata 1",
+        "Caldo verduras 1,5l",
+        "Nata 200 ml",
+        "Mantequilla 50 g",
+        "Aceite oliva",
+        "Pan tostado para tropezones",
+        "Dados jamons serrano",
+        "Sal"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": null,
+      "tags": [
+        "crema",
+        "vegetariano"
+      ],
+      "id": "vichysoisse-calabacin",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "VICHYSOISSEE ARGUIÑANO",
+      "category": "CREMAS",
+      "ingredients": [
+        "Medio pollo",
+        "Rama perejil",
+        "Puerro 4 con la parte blanca",
+        "Patata",
+        "Cebolleta 1",
+        "Zanahoria 1",
+        "Sal",
+        "Mantequilla",
+        "Nata liquida",
+        "Cebollino"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": null,
+      "tags": [
+        "crema",
+        "pollo",
+        "vegetariano"
+      ],
+      "id": "vichysoissee-arguinano",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "CALDO DE VERDURAS",
+      "category": "CALDOS",
+      "ingredients": [
+        "2 zanahorias",
+        "2 tomates maduros",
+        "2 dientes de ajo",
+        "1 cebolla",
+        "1 puerro",
+        "Perejil fresco",
+        "1 hoja de laurel",
+        "5 champiñones",
+        "Aceite de oliva virgen extra",
+        "Sal (al gusto de cada casa)",
+        "Preparación de caldo de verduras express",
+        "Pelamos los champiñones, así les retiraremos los posibles restos de tierra que puedan tener. Otra forma de limpiarlos sería lavándolos bajo el grifo, pero así se encharcarían. También podríamos limpiarlos con un paño húmedo si no estuvieran demasiado sucios.",
+        "Pelamos los ajos y los cortamos a la mitad. Pelamos la cebolla y la cortamos en cuartos. Pelamos la zanahoria y la cortamos en trozos grandes. Lavamos bien el puerro y lo cortamos en 4 trozos. Lavamos los tomates y los cortamos en 4 partes.",
+        "En una cazuela calentamos un chorrito de aceite de oliva virgen extra. Añadimos la cebolla, el puerro y el ajo troceado. Sofreímos las verduras durante 5 minutos, a fuego medio alto sin parar de remover. Añadimos los champiñones, las zanahorias y la hojita de laurel. Continuamos el sofrito 5 minutos más removiendo de vez en cuando. Por último, incorporamos los tomates en cuartos, el perejil y salamos.",
+        "Cocción y presentación del caldo de verduras",
+        "Cubrimos las verduras de agua, alrededor de 1,5 litros. Tapamos la cazuela y contamos unos 35-40 minutos de cocción desde el momento en que comience a hervir. Una vez cocinadas las verduras, colamos el cado y lo tendremos listo para utilizar en la preparación que deseemos.",
+        "Podremos reservarlo para futuras preparaciones si lo almacenamos en botes de cristal y lo congelamos o lo guardamos al vacío."
+      ],
+      "preparation": [],
+      "images": [],
+      "web": "WEB. Recetas de rechupete",
+      "tags": [
+        "caldo",
+        "vegetariano"
+      ],
+      "id": "caldo-de-verduras",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "BIZCOCHO AVENA, ZANAHORIA Y PLATANO",
+      "category": "BIZCOCHOS",
+      "ingredients": [
+        "Huevos 3",
+        "Azucar morena ½ taza",
+        "Aceite oliva ¾ taza",
+        "Zanahoria 4 zanahorias",
+        "Harina avena 2 tazas",
+        "Levadura 1 sobre",
+        "Canela molida 1cu",
+        "1-2 puños avena ojuela",
+        "Platanos maduros 2",
+        "Nueces"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": null,
+      "tags": [
+        "huevo",
+        "postre",
+        "vegetariano"
+      ],
+      "id": "bizcocho-avena-zanahoria-y-platano",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "MAGDALENAS CHOCO",
+      "category": "BIZCOCHOS",
+      "ingredients": [
+        "2 huevos",
+        "1 cuch yogurt",
+        "Cacahuete desgrasado polvo",
+        "Harina avena 2 cuch",
+        "Levadura",
+        "Choco pepitas 85%"
+      ],
+      "preparation": [],
+      "images": [],
+      "web": null,
+      "tags": [
+        "huevo",
+        "postre"
+      ],
+      "id": "magdalenas-choco",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "TORTILLA VERDURAS",
+      "category": "PICOTEOS",
+      "ingredients": [
+        "Pepino ½",
+        "Zanahoria 1",
+        "Avena",
+        "3 huevos",
+        "Sal, pimienta",
+        "Ajo polvo",
+        "Oregano",
+        "Queso 100gr",
+        "Rayarlo todo, añadir el queso al final. En una sarten con una espátula ir haciendo tortitas."
+      ],
+      "preparation": [],
+      "images": [],
+      "web": "https://www.youtube.com/shorts/z1kXCc8OkoU",
+      "tags": [
+        "huevo",
+        "picoteo",
+        "rapido",
+        "vegetariano"
+      ],
+      "id": "tortilla-verduras",
+      "hasPreparation": false,
+      "hasImage": false
+    },
+    {
+      "name": "SANDWICHS",
+      "category": "PICOTEOS",
+      "ingredients": [
+        "#recetas #postressinazucar #shorts"
+      ],
+      "preparation": [
+        "Lata atún",
+        "1 huevo cocido",
+        "1 queso crenma",
+        "1 queso cotagge",
+        "Especias",
+        "Pan tostado",
+        "BEBIDAS",
+        "SANGRIA",
+        "LIMONADA AMERICANA LIMA LIMON",
+        "BATIDOS"
+      ],
+      "images": [],
+      "web": null,
+      "tags": [
+        "huevo",
+        "picoteo",
+        "rapido"
+      ],
+      "id": "sandwichs",
+      "hasPreparation": true,
+      "hasImage": false
+    },
+    {
+      "name": "DIVISION NUTRICIONAL",
+      "category": "CONSEJOS",
+      "ingredients": [
+        "Dividir plato 4 partes"
+      ],
+      "preparation": [
+        "Comida saludable",
+        "Yogurt griego"
+      ],
+      "images": [
+        "image5.png"
+      ],
+      "web": null,
+      "tags": [
+        "consejo",
+        "saludable"
+      ],
+      "id": "division-nutricional",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "COINTREAU & TONIC",
+      "category": "BEBIDAS",
+      "ingredients": [
+        "Cointreau 5 ml"
+      ],
+      "preparation": [
+        "Tonica 20 ml",
+        "Naranja o lima",
+        "-Llenar un vaso con hielos y añadir 5 cl de Cointreau. -Añadir luego 20 cl de tónica previamente enfriada y decorar el vaso con un twist de lima o de naranja."
+      ],
+      "images": [],
+      "web": null,
+      "tags": [
+        "bebida"
+      ],
+      "id": "cointreau-tonic",
+      "hasPreparation": true,
+      "hasImage": false
+    },
+    {
+      "name": "Batidos",
+      "category": "BEBIDAS",
+      "ingredients": [
+        "Platano 1",
+        "Yogurt desnatados 2",
+        "Salvado de avena 50 g",
+        "Canela",
+        "Azúcar 1 cuch",
+        "Fresas, nueces, leche",
+        "Leche. Proteinas animal",
+        "Fresas. CH",
+        "Nueces 30 g",
+        "Leche desnatada 1 vaso",
+        "Fresas 4 grandes",
+        "Clara huevo liquida 200 ml. Precalentar",
+        "Salvado de avena 40 g",
+        "Azúcar",
+        "Manzana, leche, vainilla",
+        "Manzanas 2",
+        "Platano 1",
+        "Proteínas",
+        "Vaso leche",
+        "Medio vaso zumo naranja",
+        "Fresas, plátano, leche, avena",
+        "Fresas 4 grandes",
+        "Plátano 1",
+        "Vaso leche desnatada",
+        "Salvado de avena 40 g"
+      ],
+      "preparation": [
+        "Plátano. CH rápidos",
+        "Yogur, proteínas, avena. CH lentos"
+      ],
+      "images": [],
+      "web": null,
+      "tags": [
+        "bebida",
+        "huevo",
+        "rapido"
+      ],
+      "id": "batidos",
+      "hasPreparation": true,
+      "hasImage": false
+    }
+  ],
+  "categories": [
+    "BEBIDAS",
+    "BIZCOCHOS",
+    "CALDOS",
+    "CONSEJOS",
+    "CREMAS",
+    "PICOTEOS",
+    "PLATOS PRINCIPALES",
+    "SALSAS"
+  ],
+  "imageChoices": {},
+  "importedImages": {}
+}
