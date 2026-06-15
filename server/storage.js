@@ -40,9 +40,13 @@ export async function loadRecetario() {
     title: base.title,
     source: base.source,
     tagLabels: base.tagLabels || {},
+    seasonLabels: base.seasonLabels || {},
     gallery: base.gallery || [],
     categories: state?.categories?.length ? state.categories : base.categories || [],
     recipes: state?.recipes?.length ? state.recipes : base.recipes || [],
+    webLinks: state?.webLinks != null ? state.webLinks : base.webLinks || [],
+    filterIngredients: state?.filterIngredients != null ? state.filterIngredients : base.filterIngredients || [],
+    filterIngredientsCustomized: Boolean(state?.filterIngredientsCustomized),
     imageChoices: state?.imageChoices || {},
     importedImages: state?.importedImages || {},
   };
@@ -55,6 +59,9 @@ export async function saveRecetario(payload) {
   const current = await readJson(STATE_FILE, {
     recipes: [],
     categories: [],
+    webLinks: [],
+    filterIngredients: [],
+    filterIngredientsCustomized: false,
     imageChoices: {},
     importedImages: {},
   });
@@ -62,12 +69,31 @@ export async function saveRecetario(payload) {
   const next = {
     recipes: payload.recipes ?? current.recipes,
     categories: payload.categories ?? current.categories,
+    webLinks: payload.webLinks ?? current.webLinks ?? [],
+    filterIngredients: payload.filterIngredients ?? current.filterIngredients ?? [],
+    filterIngredientsCustomized:
+      payload.filterIngredientsCustomized ?? current.filterIngredientsCustomized ?? false,
     imageChoices: payload.imageChoices ?? current.imageChoices,
     importedImages: payload.importedImages ?? current.importedImages,
   };
 
   await writeJson(STATE_FILE, next);
   return next;
+}
+
+export async function saveWebLinks(webLinks) {
+  const current = await readJson(STATE_FILE, {
+    recipes: [],
+    categories: [],
+    webLinks: [],
+    filterIngredients: [],
+    filterIngredientsCustomized: false,
+    imageChoices: {},
+    importedImages: {},
+  });
+  current.webLinks = Array.isArray(webLinks) ? webLinks : [];
+  await writeJson(STATE_FILE, current);
+  return current.webLinks;
 }
 
 export async function registerImportedImage(id, relPath, name) {

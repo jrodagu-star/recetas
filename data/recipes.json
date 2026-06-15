@@ -18,6 +18,11 @@
     "huevo": "Con huevo",
     "sin-lactosa": "Sin lactosa"
   },
+  "seasonLabels": {
+    "verano": "Verano",
+    "invierno": "Invierno",
+    "otono": "Otoño"
+  },
   "gallery": [
     "image1.png",
     "image2.jpeg",
@@ -38,6 +43,8 @@
     "PICOTEOS",
     "PLATOS PRINCIPALES"
   ],
+  "webLinks": [],
+  "filterIngredients": [],
   "recipes": [
     {
       "name": "POLLO CREMOSO CON YOGUR AL CURRY",

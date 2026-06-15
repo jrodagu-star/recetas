@@ -610,6 +610,158 @@
     "PLATOS PRINCIPALES",
     "SALSAS"
   ],
+  "webLinks": [
+    {
+      "id": "a",
+      "title": "Directo al paladar",
+      "url": "https://www.directoalpaladar.com/"
+    },
+    {
+      "id": "b",
+      "title": "Vitónica",
+      "url": "https://www.vitonica.com/"
+    },
+    {
+      "id": "cookpad",
+      "title": "Cookpad",
+      "url": "https://cookpad.com/es"
+    }
+  ],
+  "filterIngredients": [
+    {
+      "id": "aguacate",
+      "name": "aguacate"
+    },
+    {
+      "id": "ajo",
+      "name": "ajo"
+    },
+    {
+      "id": "apio",
+      "name": "apio"
+    },
+    {
+      "id": "berenjena",
+      "name": "berenjena"
+    },
+    {
+      "id": "calabacin",
+      "name": "calabacin"
+    },
+    {
+      "id": "cebolla",
+      "name": "cebolla"
+    },
+    {
+      "id": "champinon",
+      "name": "champinon"
+    },
+    {
+      "id": "chorizo",
+      "name": "chorizo"
+    },
+    {
+      "id": "curry",
+      "name": "curry"
+    },
+    {
+      "id": "fresa",
+      "name": "fresa"
+    },
+    {
+      "id": "gengibre",
+      "name": "gengibre"
+    },
+    {
+      "id": "huevo",
+      "name": "huevo"
+    },
+    {
+      "id": "leche",
+      "name": "leche"
+    },
+    {
+      "id": "levadura",
+      "name": "levadura"
+    },
+    {
+      "id": "lima",
+      "name": "lima"
+    },
+    {
+      "id": "limon",
+      "name": "limon"
+    },
+    {
+      "id": "maiz",
+      "name": "maiz"
+    },
+    {
+      "id": "mantequilla",
+      "name": "mantequilla"
+    },
+    {
+      "id": "manzana",
+      "name": "manzana"
+    },
+    {
+      "id": "media",
+      "name": "media"
+    },
+    {
+      "id": "naranja",
+      "name": "naranja"
+    },
+    {
+      "id": "parmesano",
+      "name": "parmesano"
+    },
+    {
+      "id": "patata",
+      "name": "patata"
+    },
+    {
+      "id": "pepino",
+      "name": "pepino"
+    },
+    {
+      "id": "pescado",
+      "name": "pescado"
+    },
+    {
+      "id": "platano",
+      "name": "platano"
+    },
+    {
+      "id": "pollo",
+      "name": "pollo"
+    },
+    {
+      "id": "puerro",
+      "name": "puerro"
+    },
+    {
+      "id": "salmon",
+      "name": "salmon"
+    },
+    {
+      "id": "sesamo",
+      "name": "sesamo"
+    },
+    {
+      "id": "verdura",
+      "name": "verdura"
+    },
+    {
+      "id": "yogurt",
+      "name": "yogurt"
+    },
+    {
+      "id": "zanahoria",
+      "name": "zanahoria"
+    }
+  ],
+  "filterIngredientsCustomized": true,
   "imageChoices": {},
   "importedImages": {}
 }

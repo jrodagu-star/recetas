@@ -122,8 +122,41 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-    .filters { padding: 1.15rem 1.25rem; position: sticky; top: 1rem; }
-    .filters h2 { font-size: 1.15rem; margin-bottom: 0.85rem; }
+    .filters { padding: 1rem 1rem 1.15rem; position: sticky; top: 1rem; }
+    .filters-title {
+      font-size: 1.15rem;
+      margin: 0 0 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid var(--accent-line);
+    }
+    .filter-group {
+      padding: 0.85rem 0.9rem;
+      margin-bottom: 0.7rem;
+      background: linear-gradient(180deg, #fffdf9 0%, #faf7f2 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    .filter-group:last-of-type { margin-bottom: 0; }
+    .filter-group-title {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      margin: 0 0 0.7rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px dashed var(--accent-line);
+    }
+    .filter-group .field { margin-bottom: 0; }
+    .filter-group .field + .field { margin-top: 0.75rem; }
+    .filter-group .filter-hint { margin-top: 0.5rem; }
+    .filters-footer {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+    }
     .field { margin-bottom: 1rem; }
     .field label { display: block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 0.35rem; }
     select, input[type="search"], input[type="text"], input[type="url"], textarea {
@@ -155,6 +188,47 @@
     }
     .tag-btn:hover { border-color: var(--accent); }
     .tag-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+    .filter-scroll { max-height: 11rem; overflow-y: auto; padding-right: 0.2rem; }
+    .ingredient-filters-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px dashed var(--accent-line);
+    }
+    .ingredient-filters-head .filter-group-title { margin: 0; padding: 0; border: 0; }
+    .ingredient-filter-list { display: flex; flex-direction: column; gap: 0.35rem; }
+    .ingredient-filter-item {
+      display: block;
+      width: 100%;
+      padding: 0.48rem 0.6rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.88rem;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    .ingredient-filter-item:hover { border-color: var(--accent); }
+    .ingredient-filter-item.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+    .ingredient-filter-edit-row {
+      display: flex;
+      gap: 0.45rem;
+      align-items: center;
+    }
+    .ingredient-filter-edit-row input { flex: 1; min-width: 0; }
+    .ingredient-filters-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.55rem; }
+    .filter-hint { margin: 0.35rem 0 0; font-size: 0.78rem; color: var(--muted); line-height: 1.35; }
     .checks { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.92rem; }
     .checks label { display: flex; gap: 0.45rem; align-items: center; cursor: pointer; }
     .btn-reset {
@@ -168,7 +242,7 @@
       font: inherit;
       color: var(--muted);
     }
-    .btn-reset:hover { border-color: var(--accent); color: var(--accent); }
+    .filters-footer .btn-reset { margin-top: 0; }
     .main-col { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
     .results-bar {
       display: flex;
@@ -373,6 +447,19 @@
       color: var(--muted);
     }
     .web-link { margin-top: 0.75rem; font-size: 0.92rem; }
+    .recipe-web { margin-top: 0.5rem; }
+    .recipe-web-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .recipe-web-bar h3 { margin: 0; font-size: 1rem; }
+    .recipe-web-display { font-size: 0.92rem; }
+    .recipe-web-display a { color: var(--accent); font-weight: 500; }
+    .recipe-web-editor { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.35rem; }
+    .recipe-web-editor-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     footer {
       margin-top: 2.5rem;
       padding-top: 1.5rem;
@@ -539,6 +626,52 @@
     .category-row { display: flex; gap: 0.45rem; align-items: center; }
     .category-row input { flex: 1; min-width: 0; }
     .category-manager-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .web-links-sidebar .web-links-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.45rem;
+      margin-bottom: 0.55rem;
+      padding-bottom: 0.55rem;
+    }
+    .web-links-sidebar .web-links-header h2 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      margin: 0;
+    }
+    .web-links-sidebar .web-links-intro { font-size: 0.78rem; max-width: none; }
+    .web-links-sidebar .web-links-header-actions {
+      justify-content: flex-start;
+    }
+    .web-links-list { display: flex; flex-direction: column; gap: 0.4rem; }
+    .web-link-url { font-size: 0.74rem; color: var(--muted); line-height: 1.3; word-break: break-all; }
+    .web-links-empty { color: var(--muted); font-size: 0.82rem; margin: 0; line-height: 1.4; }
+    .web-links-sidebar .web-links-list { max-height: 11rem; overflow-y: auto; }
+    .web-link-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+      padding: 0.5rem 0.55rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fff;
+    }
+    .web-link-row-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.12rem; }
+    .web-link-row-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.86rem;
+      text-decoration: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .web-link-row-title:hover { text-decoration: underline; }
+    .web-link-row-actions { display: flex; gap: 0.15rem; flex-shrink: 0; }
+    .modal.modal-sm { max-width: 26rem; }
+    .modal.modal-sm .modal-header h2 { font-size: 1.15rem; }
   </style>
 </head>
 <body>
@@ -558,26 +691,73 @@
 
     <div class="layout">
       <aside class="panel filters" aria-label="Filtros">
-        <h2>Buscar y filtrar</h2>
-        <div class="field">
-          <label for="search">Nombre</label>
-          <input id="search" type="search" placeholder="Ej. pollo, crema, hummus…" autocomplete="off" />
+        <h2 class="filters-title">Buscar y filtrar</h2>
+
+        <section class="filter-group" aria-labelledby="filterSearchTitle">
+          <span class="filter-group-title" id="filterSearchTitle">Búsqueda</span>
+          <div class="field">
+            <label for="search">Nombre</label>
+            <input id="search" type="search" placeholder="Ej. pollo, crema, hummus…" autocomplete="off" />
+          </div>
+        </section>
+
+        <section class="filter-group" aria-labelledby="filterCategoryTitle">
+          <span class="filter-group-title" id="filterCategoryTitle">Tipo</span>
+          <div class="field">
+            <label for="category">Categoría</label>
+            <select id="category">
+              <option value="">Todas las categorías</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="filter-group" aria-labelledby="filterTagsTitle">
+          <span class="filter-group-title" id="filterTagsTitle">Características</span>
+          <div class="field">
+            <div id="tagFilters" class="tags"></div>
+          </div>
+        </section>
+
+        <section class="filter-group" aria-labelledby="filterIngredientsTitle">
+          <div class="ingredient-filters-head">
+            <span class="filter-group-title" id="filterIngredientsTitle">Ingredientes</span>
+            <button type="button" class="btn btn-ghost btn-sm" id="btnEditIngredientFilters" aria-expanded="false">Editar</button>
+          </div>
+          <div id="ingredientFilters" class="ingredient-filter-list filter-scroll"></div>
+          <div id="ingredientFiltersEditActions" class="ingredient-filters-actions" hidden>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnAddIngredientFilter">+ Añadir</button>
+            <button type="button" class="btn btn-primary btn-sm" id="btnSaveIngredientFilters">Guardar lista</button>
+          </div>
+          <p class="filter-hint">Pulsa un ingrediente para filtrar. Tras editar, pulsa <strong>Guardar lista</strong>.</p>
+        </section>
+
+        <section class="filter-group" aria-labelledby="filterSeasonTitle">
+          <span class="filter-group-title" id="filterSeasonTitle">Temporada</span>
+          <div class="field">
+            <div id="seasonFilters" class="tags"></div>
+          </div>
+        </section>
+
+        <section class="filter-group" aria-labelledby="filterOptionsTitle">
+          <span class="filter-group-title" id="filterOptionsTitle">Opciones</span>
+          <div class="field checks">
+            <label><input type="checkbox" id="onlyPhoto" /> Solo con foto</label>
+            <label><input type="checkbox" id="onlyPrep" /> Solo con preparación escrita</label>
+          </div>
+        </section>
+
+        <section class="filter-group web-links-sidebar" id="webLinksSection" aria-labelledby="filterWebLinksTitle">
+          <div class="ingredient-filters-head">
+            <span class="filter-group-title" id="filterWebLinksTitle">Páginas web</span>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnAddWebLink">+ Añadir</button>
+          </div>
+          <div id="webLinksList" class="web-links-list"></div>
+          <p class="filter-hint">Clic en el nombre para abrir. ✎ para editar.</p>
+        </section>
+
+        <div class="filters-footer">
+          <button type="button" class="btn-reset" id="resetFilters">Restablecer filtros</button>
         </div>
-        <div class="field">
-          <label for="category">Tipo de receta</label>
-          <select id="category">
-            <option value="">Todas las categorías</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Características</label>
-          <div id="tagFilters" class="tags"></div>
-        </div>
-        <div class="field checks">
-          <label><input type="checkbox" id="onlyPhoto" /> Solo con foto</label>
-          <label><input type="checkbox" id="onlyPrep" /> Solo con preparación escrita</label>
-        </div>
-        <button type="button" class="btn-reset" id="resetFilters">Restablecer filtros</button>
       </aside>
 
       <div class="main-col">
@@ -585,6 +765,7 @@
           <span id="resultCount">Cargando…</span>
           <span id="saveHint" class="save-hint" hidden>Guardado</span>
         </div>
+
         <div id="cards" class="cards" role="list"></div>
 
         <article id="detail" class="panel detail" aria-live="polite">
@@ -633,6 +814,10 @@
           <div id="formTags" class="tag-checks"></div>
         </div>
         <div class="form-row">
+          <label>Temporada</label>
+          <div id="formSeasons" class="tag-checks"></div>
+        </div>
+        <div class="form-row">
           <label for="formIngredients">Ingredientes</label>
           <textarea id="formIngredients" rows="5" placeholder="Un ingrediente por línea"></textarea>
           <p class="form-hint">Escribe cada ingrediente en una línea distinta.</p>
@@ -663,6 +848,30 @@
     </div>
   </div>
 
+  <div id="webLinkModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="webLinkModalTitle" hidden>
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2 id="webLinkModalTitle">Nuevo enlace</h2>
+        <button type="button" class="btn btn-ghost btn-sm" id="webLinkModalClose" aria-label="Cerrar">✕</button>
+      </div>
+      <form id="webLinkForm" class="modal-body">
+        <div class="form-row">
+          <label for="webLinkTitle">Nombre del sitio</label>
+          <input id="webLinkTitle" type="text" required placeholder="Ej. Directo al paladar" autocomplete="off" />
+        </div>
+        <div class="form-row">
+          <label for="webLinkUrl">Dirección web (URL)</label>
+          <input id="webLinkUrl" type="text" required placeholder="https://www.ejemplo.com" autocomplete="off" />
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-sm" id="webLinkDelete" hidden>Eliminar</button>
+        <button type="button" class="btn btn-secondary" id="webLinkCancel">Cancelar</button>
+        <button type="submit" form="webLinkForm" class="btn btn-primary" id="webLinkSave">Guardar</button>
+      </div>
+    </div>
+  </div>
+
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
     <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
     <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">‹</button>
@@ -679,6 +888,31 @@
     const STORAGE_RECIPES = "recetario-recetas-v1";
     const STORAGE_CATEGORIES = "recetario-categorias-v1";
     const STORAGE_IMPORTED = "recetario-imagenes-importadas-v1";
+    const STORAGE_WEB_LINKS = "recetario-enlaces-v1";
+    const STORAGE_FILTER_INGREDIENTS = "recetario-filtro-ingredientes-v1";
+    const STORAGE_FILTER_INGREDIENTS_CUSTOMIZED = "recetario-filtro-ingredientes-custom-v1";
+    const DEFAULT_SEASON_LABELS = {
+      verano: "Verano",
+      invierno: "Invierno",
+      otono: "Otoño",
+    };
+    const INGREDIENT_GRAMMAR_STOP = new Set([
+      "de", "del", "la", "las", "el", "los", "un", "una", "unos", "unas", "al", "con", "sin", "para", "por",
+      "y", "o", "tipo", "gusto", "opcional", "aprox", "medio", "media", "pequeño", "pequeña", "grande",
+    ]);
+    const INGREDIENT_CONDIMENTS = new Set([
+      "sal", "pimienta", "aceite", "agua", "azucar", "miel", "vinagre", "mostaza", "especias",
+      "oregano", "comino", "curcuma", "pimenton", "canela", "vainilla", "romero", "tomillo",
+      "laurel", "menta", "hierbabuena", "jengibre", "perejil", "albahaca", "hierbas",
+    ]);
+    const INGREDIENT_ADJECTIVES = new Set([
+      "cocinada", "cocinado", "picado", "picada", "picadito", "picaditos", "fresco", "fresca", "natural",
+      "griego", "griega", "desnatado", "desnatada", "refinada", "virgen", "extra", "maduro", "madura",
+      "troceado", "troceada", "escurrido", "escurrida", "tostado", "tostada", "granulado", "molida",
+      "molido", "entero", "entera", "pelado", "pelada", "peladito", "peladitos", "triturado", "triturada",
+      "congelado", "congelada", "laminas", "lonchas", "lomos", "dientes", "ramita", "ramas", "hojas",
+      "pechuga", "lomo", "zumo", "jugo",
+    ]);
 
     let DATA = null;
     let selectedId = null;
@@ -689,6 +923,8 @@
     let toastTimer = null;
     let lightboxFiles = [];
     let lightboxIndex = 0;
+    let editingWebLinkId = null;
+    let ingredientFiltersEditing = false;
 
     async function loadBaseData() {
       const embedded = document.getElementById("recipes-data");
@@ -947,6 +1183,20 @@
           base.categories = JSON.parse(savedCats);
         } catch (_) { /* utilizar base */ }
       }
+      const savedLinks = localStorage.getItem(STORAGE_WEB_LINKS);
+      if (savedLinks) {
+        try {
+          base.webLinks = JSON.parse(savedLinks);
+        } catch (_) { /* utilizar base */ }
+      }
+      const savedFilterIngredients = localStorage.getItem(STORAGE_FILTER_INGREDIENTS);
+      if (savedFilterIngredients) {
+        try {
+          base.filterIngredients = JSON.parse(savedFilterIngredients);
+        } catch (_) { /* utilizar base */ }
+      }
+      base.filterIngredientsCustomized =
+        localStorage.getItem(STORAGE_FILTER_INGREDIENTS_CUSTOMIZED) === "true";
       syncCategoriesWithRecipes(base);
       updateSaveHint();
       return base;
@@ -958,10 +1208,74 @@
         if (r.category) set.add(r.category);
       });
       data.categories = [...set].sort((a, b) => a.localeCompare(b, "es"));
+      syncWebLinksInData(data);
+      syncFilterIngredients(data);
+    }
+
+    function syncWebLinksInData(data) {
+      const cleaned = (data.webLinks || [])
+        .map((link) => ({
+          id: String(link.id || "").trim(),
+          title: String(link.title || "").trim(),
+          url: normalizeWebUrl(link.url),
+        }))
+        .filter((link) => link.title && link.url);
+      const used = new Set();
+      data.webLinks = cleaned.map((link) => {
+        let base = link.id || slugify(link.title) || "enlace";
+        let id = base;
+        let n = 1;
+        while (used.has(id)) id = `${base}-${++n}`;
+        used.add(id);
+        return { ...link, id };
+      });
+    }
+
+    function syncFilterIngredients(data) {
+      const map = new Map();
+      (data.filterIngredients || []).forEach((item) => {
+        const name = normalizeFilterIngredientName(item?.name || item);
+        if (!name) return;
+        const id = item?.id || slugify(name) || "ingrediente";
+        if (!map.has(name)) map.set(name, { id, name });
+      });
+
+      if (!map.size && !data.filterIngredientsCustomized && (data.recipes || []).length) {
+        discoverIngredientsFromRecipes(data).forEach(({ key }) => {
+          if (!map.has(key)) map.set(key, { id: slugify(key) || "ingrediente", name: key });
+        });
+      }
+
+      data.filterIngredients = [...map.values()].sort((a, b) =>
+        ingredientFilterLabel(a.name).localeCompare(ingredientFilterLabel(b.name), "es")
+      );
+    }
+
+    async function persistWebLinks() {
+      if (!DATA) return false;
+      syncWebLinksInData(DATA);
+      if (useBackend) {
+        try {
+          const res = await fetch("/api/web-links", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ webLinks: DATA.webLinks }),
+          });
+          if (!res.ok) throw new Error("save failed");
+          const body = await res.json();
+          if (Array.isArray(body.webLinks)) DATA.webLinks = body.webLinks;
+          return true;
+        } catch (_) {
+          showToast("Error al guardar los enlaces", true);
+          return false;
+        }
+      }
+      localStorage.setItem(STORAGE_WEB_LINKS, JSON.stringify(DATA.webLinks || []));
+      return true;
     }
 
     async function persistState() {
-      if (!DATA) return;
+      if (!DATA) return false;
       document.getElementById("recipeTotal").textContent = DATA.recipes.length;
       updateSaveHint();
 
@@ -973,21 +1287,32 @@
             body: JSON.stringify({
               recipes: DATA.recipes,
               categories: DATA.categories,
+              webLinks: DATA.webLinks || [],
+              filterIngredients: DATA.filterIngredients || [],
+              filterIngredientsCustomized: Boolean(DATA.filterIngredientsCustomized),
               imageChoices,
               importedImages: importedImagesPayload(),
             }),
           });
           if (!res.ok) throw new Error("save failed");
+          return true;
         } catch (_) {
           showToast("Error al guardar en el servidor", true);
+          return false;
         }
-        return;
       }
 
       localStorage.setItem(STORAGE_RECIPES, JSON.stringify(DATA.recipes));
       localStorage.setItem(STORAGE_CATEGORIES, JSON.stringify(DATA.categories));
+      localStorage.setItem(STORAGE_WEB_LINKS, JSON.stringify(DATA.webLinks || []));
+      localStorage.setItem(STORAGE_FILTER_INGREDIENTS, JSON.stringify(DATA.filterIngredients || []));
+      localStorage.setItem(
+        STORAGE_FILTER_INGREDIENTS_CUSTOMIZED,
+        DATA.filterIngredientsCustomized ? "true" : "false"
+      );
       localStorage.setItem(STORAGE_KEY, JSON.stringify(imageChoices));
       localStorage.setItem(STORAGE_IMPORTED, JSON.stringify(importedImages));
+      return true;
     }
 
     function persistRecipes() {
@@ -1016,6 +1341,47 @@
       return id;
     }
 
+    function uniqueWebLinkId(title, excludeId) {
+      let id = slugify(title) || "enlace";
+      let n = 1;
+      while ((DATA.webLinks || []).some((l) => l.id === id && l.id !== excludeId)) {
+        id = `${slugify(title) || "enlace"}-${++n}`;
+      }
+      return id;
+    }
+
+    function buildWebLinksFromDraft(draft) {
+      const used = new Set();
+      return draft.map((link) => {
+        const title = String(link.title || "").trim();
+        const url = normalizeWebUrl(link.url);
+        const base = slugify(title) || "enlace";
+        let id = String(link.id || "").trim() || base;
+        let n = 1;
+        while (used.has(id)) {
+          id = `${base}-${++n}`;
+        }
+        used.add(id);
+        return { id, title, url };
+      });
+    }
+
+    function normalizeWebLink(link) {
+      const title = String(link.title || "").trim();
+      return {
+        id: link.id || uniqueWebLinkId(title || "enlace"),
+        title,
+        url: normalizeWebUrl(link.url),
+      };
+    }
+
+    function normalizeWebUrl(url) {
+      const raw = String(url || "").trim();
+      if (!raw) return "";
+      if (/^https?:\/\//i.test(raw)) return raw;
+      return `https://${raw}`;
+    }
+
     function parseLines(text) {
       return String(text || "")
         .split("\n")
@@ -1028,6 +1394,7 @@
       recipe.preparation = recipe.preparation || [];
       recipe.images = recipe.images || [];
       recipe.tags = recipe.tags || [];
+      recipe.seasons = recipe.seasons || [];
       recipe.hasPreparation = recipe.preparation.length > 0;
       recipe.hasImage = recipe.images.length > 0;
       return recipe;
@@ -1105,6 +1472,11 @@
         cb.checked = selectedTags.has(cb.value);
       });
 
+      const selectedSeasons = new Set(recipe?.seasons || []);
+      document.querySelectorAll("#formSeasons input").forEach((cb) => {
+        cb.checked = selectedSeasons.has(cb.value);
+      });
+
       const selectedImgs = new Set(recipe?.images || []);
       renderFormImages(selectedImgs);
 
@@ -1125,6 +1497,17 @@
       const container = document.getElementById("formTags");
       container.innerHTML = "";
       Object.entries(DATA.tagLabels || {}).forEach(([id, label]) => {
+        const lbl = document.createElement("label");
+        lbl.className = "tag-check";
+        lbl.innerHTML = `<input type="checkbox" value="${id}" /> ${escapeHtml(label)}`;
+        container.appendChild(lbl);
+      });
+    }
+
+    function renderFormSeasons() {
+      const container = document.getElementById("formSeasons");
+      container.innerHTML = "";
+      Object.entries(seasonLabels()).forEach(([id, label]) => {
         const lbl = document.createElement("label");
         lbl.className = "tag-check";
         lbl.innerHTML = `<input type="checkbox" value="${id}" /> ${escapeHtml(label)}`;
@@ -1252,6 +1635,7 @@
       }
       ensureCategory(category);
       const tags = [...document.querySelectorAll("#formTags input:checked")].map((cb) => cb.value);
+      const seasons = [...document.querySelectorAll("#formSeasons input:checked")].map((cb) => cb.value);
       const images = [...document.querySelectorAll("#formImages input:checked")].map((cb) => cb.value);
       const webRaw = document.getElementById("formWeb").value.trim();
 
@@ -1259,6 +1643,7 @@
         name,
         category,
         tags,
+        seasons,
         images,
         ingredients: parseLines(document.getElementById("formIngredients").value),
         preparation: parseLines(document.getElementById("formPreparation").value),
@@ -1286,6 +1671,8 @@
       persistState();
       closeModal();
       renderTagFilters();
+      renderIngredientFilters();
+      renderSeasonFilters();
       renderCategorySelect(true);
       renderFormCategorySelect(category);
       renderCards();
@@ -1307,6 +1694,8 @@
 
       showToast("Receta eliminada");
       renderTagFilters();
+      renderIngredientFilters();
+      renderSeasonFilters();
       renderCategorySelect(true);
       renderCards();
       if (selectedId) {
@@ -1363,12 +1752,230 @@
         }
         if (document.getElementById("modalBackdrop").classList.contains("open")) {
           closeModal();
+          return;
         }
+        if (document.getElementById("webLinkModalBackdrop").classList.contains("open")) {
+          closeWebLinkModal();
+          return;
+        }
+        if (ingredientFiltersEditing) setIngredientFiltersEditing(false);
+      });
+    }
+
+    function renderWebLinks() {
+      const container = document.getElementById("webLinksList");
+      container.innerHTML = "";
+      const links = DATA?.webLinks || [];
+      if (!links.length) {
+        container.innerHTML =
+          '<p class="web-links-empty">Aún no hay enlaces. Pulsa <strong>+ Añadir</strong> para guardar un sitio de recetas.</p>';
+        return;
+      }
+      links.forEach((link) => {
+        const row = document.createElement("div");
+        row.className = "web-link-row";
+        const main = document.createElement("div");
+        main.className = "web-link-row-main";
+        const anchor = document.createElement("a");
+        anchor.className = "web-link-row-title";
+        anchor.href = normalizeWebUrl(link.url);
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+        anchor.textContent = link.title;
+        const url = document.createElement("span");
+        url.className = "web-link-url";
+        url.textContent = link.url;
+        main.append(anchor, url);
+        const actions = document.createElement("div");
+        actions.className = "web-link-row-actions";
+        const editBtn = document.createElement("button");
+        editBtn.type = "button";
+        editBtn.className = "btn btn-ghost btn-sm";
+        editBtn.title = "Editar enlace";
+        editBtn.setAttribute("aria-label", "Editar enlace");
+        editBtn.textContent = "✎";
+        editBtn.addEventListener("click", () => openWebLinkModal(link.id));
+        actions.append(editBtn);
+        row.append(main, actions);
+        container.appendChild(row);
+      });
+    }
+
+    function openWebLinkModal(linkId) {
+      editingWebLinkId = linkId || null;
+      const link = editingWebLinkId ? (DATA.webLinks || []).find((l) => l.id === editingWebLinkId) : null;
+      document.getElementById("webLinkModalTitle").textContent = link ? "Editar enlace" : "Nuevo enlace";
+      document.getElementById("webLinkTitle").value = link?.title || "";
+      document.getElementById("webLinkUrl").value = link?.url || "";
+      document.getElementById("webLinkDelete").hidden = !link;
+      const backdrop = document.getElementById("webLinkModalBackdrop");
+      backdrop.hidden = false;
+      backdrop.classList.add("open");
+      document.getElementById("webLinkTitle").focus();
+    }
+
+    function closeWebLinkModal() {
+      editingWebLinkId = null;
+      const backdrop = document.getElementById("webLinkModalBackdrop");
+      backdrop.classList.remove("open");
+      backdrop.hidden = true;
+      document.getElementById("webLinkForm").reset();
+    }
+
+    async function saveWebLinkFromModal(e) {
+      e.preventDefault();
+      const title = document.getElementById("webLinkTitle").value.trim();
+      const url = document.getElementById("webLinkUrl").value.trim();
+      if (!title || !url) {
+        showToast("Nombre y URL son obligatorios", true);
+        return;
+      }
+      if (!DATA.webLinks) DATA.webLinks = [];
+      let nextLinks;
+      if (editingWebLinkId) {
+        nextLinks = DATA.webLinks.map((link) =>
+          link.id === editingWebLinkId ? { ...link, title, url } : link
+        );
+      } else {
+        nextLinks = [...DATA.webLinks, { id: "", title, url }];
+      }
+      DATA.webLinks = buildWebLinksFromDraft(nextLinks);
+      const saved = await persistWebLinks();
+      if (!saved) return;
+      showToast(editingWebLinkId ? "Enlace actualizado" : "Enlace añadido");
+      closeWebLinkModal();
+      renderWebLinks();
+    }
+
+    async function deleteWebLinkFromModal() {
+      if (!editingWebLinkId) return;
+      if (!confirm("¿Eliminar este enlace?")) return;
+      DATA.webLinks = (DATA.webLinks || []).filter((link) => link.id !== editingWebLinkId);
+      const saved = await persistWebLinks();
+      if (!saved) return;
+      showToast("Enlace eliminado");
+      closeWebLinkModal();
+      renderWebLinks();
+    }
+
+    function bindWebLinks() {
+      document.getElementById("btnAddWebLink").addEventListener("click", () => openWebLinkModal(null));
+      document.getElementById("webLinkForm").addEventListener("submit", saveWebLinkFromModal);
+      document.getElementById("webLinkModalClose").addEventListener("click", closeWebLinkModal);
+      document.getElementById("webLinkCancel").addEventListener("click", closeWebLinkModal);
+      document.getElementById("webLinkDelete").addEventListener("click", deleteWebLinkFromModal);
+      document.getElementById("webLinkModalBackdrop").addEventListener("click", (e) => {
+        if (e.target.id === "webLinkModalBackdrop") closeWebLinkModal();
       });
     }
 
     function tagLabel(id) {
       return (DATA.tagLabels && DATA.tagLabels[id]) || id;
+    }
+
+    function seasonLabels() {
+      return DATA.seasonLabels || DEFAULT_SEASON_LABELS;
+    }
+
+    function seasonLabel(id) {
+      return seasonLabels()[id] || id;
+    }
+
+    function normalizeIngredientText(text) {
+      return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/\p{M}/gu, "")
+        .trim();
+    }
+
+    function singularizeIngredient(word) {
+      if (!word) return "";
+      if (word.endsWith("es") && word.length > 4) return word.slice(0, -2);
+      if (word.endsWith("s") && word.length > 3) return word.slice(0, -1);
+      return word;
+    }
+
+    function extractMainIngredientName(line) {
+      let s = normalizeIngredientText(line);
+      if (!s || s.length < 3) return "";
+      if (s.length > 70 || /^(comenzamos|calentar|lavar|poner|pasar|anadir|añadir|mezclar|ir |batir|servir)/.test(s)) {
+        return "";
+      }
+
+      s = s.replace(/\([^)]*\)/g, " ");
+      s = s.replace(
+        /^[\d\s\/\.,\-–]+(\s*(g|gr|kg|ml|cc|l|litros?|ud|uds?|unidades?|cucharadas?|cucharaditas?|cuch|pz|piezas?|dientes?|ramas?|ramita|hojas?|zumo|lonchas?|tazas?|puñados?))?\s*(de\s+)?/i,
+        ""
+      );
+      s = s.replace(/\s*(al gusto|opcional|opcionalmente|aprox\.?).*$/g, "");
+      s = s.split(/[,;]/)[0].split(" o ")[0].trim();
+      if (!s) return "";
+
+      const head = s.split(/\s+de\s+/)[0].split(/\s+/).filter(Boolean).pop() || "";
+      if (INGREDIENT_CONDIMENTS.has(head)) return "";
+
+      const parts = s.split(/\s+de\s+/);
+      let chunk = parts.length > 1 ? parts[parts.length - 1] : s;
+      let words = chunk
+        .split(/\s+/)
+        .map((w) => w.replace(/[^a-z0-9áéíóúüñ-]/gi, ""))
+        .filter((w) => w.length > 2 && !INGREDIENT_GRAMMAR_STOP.has(w) && !INGREDIENT_ADJECTIVES.has(w));
+
+      if (!words.length) {
+        chunk = parts[0];
+        words = chunk
+          .split(/\s+/)
+          .map((w) => w.replace(/[^a-z0-9áéíóúüñ-]/gi, ""))
+          .filter((w) => w.length > 2 && !INGREDIENT_GRAMMAR_STOP.has(w) && !INGREDIENT_ADJECTIVES.has(w));
+      }
+
+      if (!words.length) return "";
+
+      let main = singularizeIngredient(words[words.length - 1]);
+      if (INGREDIENT_CONDIMENTS.has(main) || INGREDIENT_ADJECTIVES.has(main)) return "";
+      return main;
+    }
+
+    function ingredientFilterLabel(name) {
+      if (!name) return "";
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+
+    function normalizeFilterIngredientName(raw) {
+      let name = normalizeIngredientText(raw);
+      if (!name) return "";
+      name = name.replace(/^[\d\s\/\.,\-–]+/g, " ").trim();
+      const parts = name.split(/\s+/).filter(Boolean);
+      name = singularizeIngredient(parts[parts.length - 1] || name);
+      if (!name || name.length < 3 || INGREDIENT_CONDIMENTS.has(name)) return "";
+      return name;
+    }
+
+    function discoverIngredientsFromRecipes(data) {
+      const map = new Map();
+      (data?.recipes || DATA?.recipes || []).forEach((recipe) => {
+        (recipe.ingredients || []).forEach((line) => {
+          const key = extractMainIngredientName(line);
+          if (!key || key.length < 3) return;
+          if (!map.has(key)) map.set(key, ingredientFilterLabel(key));
+        });
+      });
+      return [...map.entries()].map(([key, label]) => ({ key, label }));
+    }
+
+    function uniqueFilterIngredientId(name, excludeId) {
+      let id = slugify(name) || "ingrediente";
+      let n = 1;
+      while ((DATA.filterIngredients || []).some((item) => item.id === id && item.id !== excludeId)) {
+        id = `${slugify(name) || "ingrediente"}-${++n}`;
+      }
+      return id;
+    }
+
+    function recipeHasIngredient(recipe, filterKey) {
+      const key = filterKey.toLowerCase();
+      return (recipe.ingredients || []).some((line) => extractMainIngredientName(line) === key);
     }
 
     function extractUrl(web) {
@@ -1395,17 +2002,64 @@
       persistState();
     }
 
+    function openRecipeWebEditor() {
+      document.getElementById("recipeWebDisplay").hidden = true;
+      const editor = document.getElementById("recipeWebEditor");
+      editor.hidden = false;
+      const input = document.getElementById("recipeWebInput");
+      input.focus();
+      input.select();
+      document.getElementById("recipeWebSection")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function closeRecipeWebEditor() {
+      document.getElementById("recipeWebDisplay").hidden = false;
+      document.getElementById("recipeWebEditor").hidden = true;
+    }
+
+    function saveRecipeWebLink(recipeId) {
+      const recipe = getRecipeById(recipeId);
+      if (!recipe) return;
+      const value = document.getElementById("recipeWebInput").value.trim();
+      if (!value) {
+        showToast("Escribe una URL o referencia", true);
+        return;
+      }
+      recipe.web = value;
+      persistState();
+      showToast("Enlace guardado");
+      renderDetail(recipe);
+    }
+
+    function removeRecipeWebLink(recipeId) {
+      const recipe = getRecipeById(recipeId);
+      if (!recipe || !recipe.web) return;
+      if (!confirm("¿Quitar el enlace web de esta receta?")) return;
+      recipe.web = null;
+      persistState();
+      showToast("Enlace eliminado");
+      renderDetail(recipe);
+    }
+
     function matchesFilters(recipe) {
       const q = document.getElementById("search").value.trim().toLowerCase();
       const cat = document.getElementById("category").value;
       const onlyPhoto = document.getElementById("onlyPhoto").checked;
       const onlyPrep = document.getElementById("onlyPrep").checked;
-      const activeTags = [...document.querySelectorAll(".tag-btn.active")].map((b) => b.dataset.tag);
+      const activeTags = [...document.querySelectorAll("#tagFilters .tag-btn.active")].map((b) => b.dataset.tag);
+      const activeIngredients = [...document.querySelectorAll("#ingredientFilters .ingredient-filter-item.active")].map(
+        (b) => b.dataset.ingredient
+      );
+      const activeSeasons = [...document.querySelectorAll("#seasonFilters .tag-btn.active")].map((b) => b.dataset.season);
 
       if (cat && recipe.category !== cat) return false;
       if (onlyPhoto && !recipe.hasImage) return false;
       if (onlyPrep && !recipe.hasPreparation) return false;
       if (activeTags.length && !activeTags.every((t) => recipe.tags.includes(t))) return false;
+      if (activeIngredients.length && !activeIngredients.some((ing) => recipeHasIngredient(recipe, ing))) {
+        return false;
+      }
+      if (activeSeasons.length && !activeSeasons.some((s) => (recipe.seasons || []).includes(s))) return false;
       if (q) {
         const blob = [recipe.name, recipe.category, ...(recipe.ingredients || []), ...(recipe.preparation || [])]
           .join(" ")
@@ -1419,13 +2073,145 @@
       const tags = new Set();
       DATA.recipes.forEach((r) => r.tags.forEach((t) => tags.add(t)));
       const container = document.getElementById("tagFilters");
+      const active = new Set([...container.querySelectorAll(".tag-btn.active")].map((b) => b.dataset.tag));
       container.innerHTML = "";
       [...tags].sort((a, b) => tagLabel(a).localeCompare(tagLabel(b), "es")).forEach((tag) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "tag-btn";
+        btn.className = "tag-btn" + (active.has(tag) ? " active" : "");
         btn.dataset.tag = tag;
         btn.textContent = tagLabel(tag);
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("active");
+          renderCards();
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    function createIngredientFilterEditRow(item) {
+      const row = document.createElement("div");
+      row.className = "ingredient-filter-edit-row";
+      row.dataset.id = item?.id || "";
+      const input = document.createElement("input");
+      input.type = "text";
+      input.dataset.field = "name";
+      input.placeholder = "Ej. Pollo, Merluza…";
+      input.value = item?.name ? ingredientFilterLabel(item.name) : "";
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "btn btn-danger btn-sm";
+      del.textContent = "Eliminar";
+      del.addEventListener("click", () => row.remove());
+      row.append(input, del);
+      return row;
+    }
+
+    function setIngredientFiltersEditing(editing) {
+      ingredientFiltersEditing = editing;
+      const btn = document.getElementById("btnEditIngredientFilters");
+      btn.textContent = editing ? "Cancelar" : "Editar";
+      btn.setAttribute("aria-expanded", String(editing));
+      document.getElementById("ingredientFiltersEditActions").hidden = !editing;
+      renderIngredientFilters();
+    }
+
+    function renderIngredientFilters() {
+      const container = document.getElementById("ingredientFilters");
+      const active = new Set(
+        [...container.querySelectorAll(".ingredient-filter-item.active")].map((b) => b.dataset.ingredient)
+      );
+      const items = DATA?.filterIngredients || [];
+      container.innerHTML = "";
+
+      if (!ingredientFiltersEditing) {
+        if (!items.length) {
+          container.innerHTML =
+            '<p class="filter-hint">No hay ingredientes en la lista. Pulsa Editar para añadirlos.</p>';
+          return;
+        }
+        items.forEach((item) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "ingredient-filter-item" + (active.has(item.name) ? " active" : "");
+          btn.dataset.ingredient = item.name;
+          btn.textContent = ingredientFilterLabel(item.name);
+          btn.addEventListener("click", () => {
+            btn.classList.toggle("active");
+            renderCards();
+          });
+          container.appendChild(btn);
+        });
+        return;
+      }
+
+      if (!items.length) {
+        container.appendChild(createIngredientFilterEditRow({}));
+      } else {
+        items.forEach((item) => container.appendChild(createIngredientFilterEditRow(item)));
+      }
+    }
+
+    function collectIngredientFiltersFromEditor() {
+      return [...document.querySelectorAll("#ingredientFilters .ingredient-filter-edit-row")]
+        .map((row) => ({
+          id: row.dataset.id || "",
+          name: row.querySelector('[data-field="name"]')?.value.trim() || "",
+        }))
+        .filter((item) => item.name);
+    }
+
+    async function saveIngredientFiltersFromEditor() {
+      const draft = collectIngredientFiltersFromEditor();
+      const map = new Map();
+      for (const item of draft) {
+        const name = normalizeFilterIngredientName(item.name);
+        if (!name) {
+          showToast(`«${item.name}» no es un ingrediente válido (evita condimentos como sal o aceite)`, true);
+          return;
+        }
+        if (map.has(name)) {
+          showToast(`«${ingredientFilterLabel(name)}» está repetido`, true);
+          return;
+        }
+        map.set(name, {
+          id: item.id || uniqueFilterIngredientId(name),
+          name,
+        });
+      }
+      DATA.filterIngredients = [...map.values()].sort((a, b) =>
+        ingredientFilterLabel(a.name).localeCompare(ingredientFilterLabel(b.name), "es")
+      );
+      DATA.filterIngredientsCustomized = true;
+      const saved = await persistState();
+      if (!saved) return;
+      setIngredientFiltersEditing(false);
+      showToast("Lista de ingredientes guardada");
+      renderCards();
+    }
+
+    function bindIngredientFilters() {
+      document.getElementById("btnEditIngredientFilters").addEventListener("click", () => {
+        if (ingredientFiltersEditing) setIngredientFiltersEditing(false);
+        else setIngredientFiltersEditing(true);
+      });
+      document.getElementById("btnAddIngredientFilter").addEventListener("click", () => {
+        document.getElementById("ingredientFilters").appendChild(createIngredientFilterEditRow({}));
+        document.getElementById("ingredientFilters").lastElementChild?.querySelector("input")?.focus();
+      });
+      document.getElementById("btnSaveIngredientFilters").addEventListener("click", saveIngredientFiltersFromEditor);
+    }
+
+    function renderSeasonFilters() {
+      const container = document.getElementById("seasonFilters");
+      const active = new Set([...container.querySelectorAll(".tag-btn.active")].map((b) => b.dataset.season));
+      container.innerHTML = "";
+      Object.entries(seasonLabels()).forEach(([id, label]) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "tag-btn" + (active.has(id) ? " active" : "");
+        btn.dataset.season = id;
+        btn.textContent = label;
         btn.addEventListener("click", () => {
           btn.classList.toggle("active");
           renderCards();
@@ -1530,7 +2316,10 @@
         photos += `</div></section>`;
       }
 
-      const badges = recipe.tags.map((t) => `<span class="badge">${tagLabel(t)}</span>`).join("");
+      const badges = [
+        ...recipe.tags.map((t) => `<span class="badge">${tagLabel(t)}</span>`),
+        ...(recipe.seasons || []).map((s) => `<span class="badge">${escapeHtml(seasonLabel(s))}</span>`),
+      ].join("");
 
       const ing = recipe.ingredients.length
         ? `<ul>${recipe.ingredients.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`
@@ -1547,10 +2336,13 @@
       }
 
       let web = "";
+      const webBtnLabel = recipe.web ? "Editar enlace" : "+ Añadir enlace";
       if (recipe.web) {
         web = url
-          ? `<p class="web-link"><strong>Fuente:</strong> <a href="${url}" target="_blank" rel="noopener">${escapeHtml(recipe.web)}</a></p>`
-          : `<p class="web-link"><strong>Fuente:</strong> ${escapeHtml(recipe.web)}</p>`;
+          ? `<p class="recipe-web-display"><a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(recipe.web)}</a></p>`
+          : `<p class="recipe-web-display">${escapeHtml(recipe.web)}</p>`;
+      } else {
+        web = `<p class="note recipe-web-display">Sin enlace web.</p>`;
       }
 
       el.innerHTML = `
@@ -1561,6 +2353,7 @@
               <p style="margin:0.35rem 0 0;color:var(--muted)">${escapeHtml(recipe.category)}</p>
               <div class="detail-actions">
                 <button type="button" class="btn btn-secondary btn-sm" id="btnEditRecipe">Editar</button>
+                <button type="button" class="btn btn-ghost btn-sm" id="btnRecipeWebLink">${webBtnLabel}</button>
                 <button type="button" class="btn btn-danger btn-sm" id="btnDeleteRecipe">Eliminar</button>
               </div>
             </div>
@@ -1576,7 +2369,20 @@
               ${prep}
             </section>
           </div>
-          ${web}
+          <section class="section recipe-web" id="recipeWebSection">
+            <div class="recipe-web-bar">
+              <h3>Enlace web</h3>
+            </div>
+            <div id="recipeWebDisplay">${web}</div>
+            <div id="recipeWebEditor" class="recipe-web-editor" hidden>
+              <input type="text" id="recipeWebInput" placeholder="https://… o texto de referencia" value="${escapeHtml(recipe.web || "")}" />
+              <div class="recipe-web-editor-actions">
+                <button type="button" class="btn btn-primary btn-sm" id="btnSaveRecipeWeb">Guardar enlace</button>
+                <button type="button" class="btn btn-secondary btn-sm" id="btnCancelRecipeWeb">Cancelar</button>
+                ${recipe.web ? '<button type="button" class="btn btn-danger btn-sm" id="btnRemoveRecipeWeb">Quitar enlace</button>' : ""}
+              </div>
+            </div>
+          </section>
           ${photos}
         </div>
       `;
@@ -1596,6 +2402,10 @@
       });
 
       document.getElementById("btnEditRecipe").addEventListener("click", () => openModal("edit", recipe));
+      document.getElementById("btnRecipeWebLink").addEventListener("click", openRecipeWebEditor);
+      document.getElementById("btnSaveRecipeWeb").addEventListener("click", () => saveRecipeWebLink(recipe.id));
+      document.getElementById("btnCancelRecipeWeb").addEventListener("click", closeRecipeWebEditor);
+      document.getElementById("btnRemoveRecipeWeb")?.addEventListener("click", () => removeRecipeWebLink(recipe.id));
       document.getElementById("btnDeleteRecipe").addEventListener("click", () => deleteRecipe(recipe.id));
     }
 
@@ -1617,7 +2427,10 @@
         document.getElementById("category").value = "";
         document.getElementById("onlyPhoto").checked = false;
         document.getElementById("onlyPrep").checked = false;
-        document.querySelectorAll(".tag-btn.active").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(
+          "#tagFilters .tag-btn.active, #ingredientFilters .ingredient-filter-item.active, #seasonFilters .tag-btn.active"
+        )
+          .forEach((b) => b.classList.remove("active"));
         renderCards();
       });
     }
@@ -1629,10 +2442,16 @@
         renderCategorySelect();
         renderFormCategorySelect();
         renderFormTags();
+        renderFormSeasons();
         renderTagFilters();
+        renderIngredientFilters();
+        renderSeasonFilters();
         bindFilters();
         bindCrud();
+        bindWebLinks();
+        bindIngredientFilters();
         bindLightbox();
+        renderWebLinks();
         renderCards();
         if (DATA.recipes.length) {
           selectedId = DATA.recipes[0].id;

@@ -7,6 +7,7 @@ import {
   ensureDirs,
   loadRecetario,
   saveRecetario,
+  saveWebLinks,
   registerImportedImage,
   importedDir,
 } from "./storage.js";
@@ -44,15 +45,38 @@ app.get("/api/recetario", async (_req, res) => {
 
 app.put("/api/recetario", async (req, res) => {
   try {
-    const { recipes, categories, imageChoices, importedImages } = req.body || {};
+    const { recipes, categories, webLinks, filterIngredients, filterIngredientsCustomized, imageChoices, importedImages } =
+      req.body || {};
     if (!Array.isArray(recipes) || !Array.isArray(categories)) {
       return res.status(400).json({ error: "Datos inválidos" });
     }
-    await saveRecetario({ recipes, categories, imageChoices, importedImages });
+    await saveRecetario({
+      recipes,
+      categories,
+      webLinks,
+      filterIngredients,
+      filterIngredientsCustomized,
+      imageChoices,
+      importedImages,
+    });
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "No se pudo guardar" });
+  }
+});
+
+app.put("/api/web-links", async (req, res) => {
+  try {
+    const { webLinks } = req.body || {};
+    if (!Array.isArray(webLinks)) {
+      return res.status(400).json({ error: "Enlaces inválidos" });
+    }
+    const saved = await saveWebLinks(webLinks);
+    res.json({ ok: true, webLinks: saved });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "No se pudieron guardar los enlaces" });
   }
 });
 
