@@ -1,0 +1,5 @@
+_docx_extract/
+node_modules/
+data/state.json
+images/imported/*
+!images/imported/.gitkeep

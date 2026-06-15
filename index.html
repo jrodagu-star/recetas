@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recetario — Recetas caseras</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --surface-2: #f9fafb;
+      --ink: #111827;
+      --muted: #6b7280;
+      --accent: #b45309;
+      --accent-hover: #92400e;
+      --accent-soft: #fff7ed;
+      --accent-line: #fed7aa;
+      --line: #e5e7eb;
+      --danger: #dc2626;
+      --danger-soft: #fef2f2;
+      --success: #059669;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+      --shadow-lg: 0 4px 6px rgba(0,0,0,.04), 0 20px 48px rgba(0,0,0,.1);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --font: "DM Sans", system-ui, sans-serif;
+      --font-display: "Instrument Serif", Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; letter-spacing: -0.02em; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 1rem; }
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+    header h1 { font-size: 1.85rem; }
+    header p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.95rem; max-width: 32rem; }
+    .header-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: var(--radius-sm);
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    .btn-secondary:hover { background: var(--surface-2); border-color: #d1d5db; }
+    .btn-danger {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border-color: #fecaca;
+    }
+    .btn-danger:hover { background: #fee2e2; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border-color: transparent;
+    }
+    .btn-ghost:hover { color: var(--ink); background: var(--surface-2); }
+    .btn-sm { padding: 0.4rem 0.75rem; font-size: 0.82rem; }
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .filters { padding: 1.15rem 1.25rem; position: sticky; top: 1rem; }
+    .filters h2 { font-size: 1.15rem; margin-bottom: 0.85rem; }
+    .field { margin-bottom: 1rem; }
+    .field label { display: block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 0.35rem; }
+    select, input[type="search"], input[type="text"], input[type="url"], textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      background: var(--surface);
+      color: var(--ink);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    select:focus, input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.12);
+    }
+    textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .tag-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    .tag-btn:hover { border-color: var(--accent); }
+    .tag-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+    .checks { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.92rem; }
+    .checks label { display: flex; gap: 0.45rem; align-items: center; cursor: pointer; }
+    .btn-reset {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border: 1px dashed var(--line);
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      font: inherit;
+      color: var(--muted);
+    }
+    .btn-reset:hover { border-color: var(--accent); color: var(--accent); }
+    .main-col { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+    .results-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding: 0 0.15rem;
+    }
+    .save-hint { font-size: 0.8rem; color: var(--success); }
+    .cards {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.85rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.25rem 0.15rem 0.65rem;
+      scroll-behavior: smooth;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-line) transparent;
+    }
+    .cards::-webkit-scrollbar { height: 6px; }
+    .cards::-webkit-scrollbar-track { background: transparent; }
+    .cards::-webkit-scrollbar-thumb {
+      background: var(--accent-line);
+      border-radius: 999px;
+    }
+    .card {
+      flex: 0 0 200px;
+      width: 200px;
+      text-align: left;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      scroll-snap-align: start;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--accent-line); }
+    .card.active { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15); }
+    .card-thumb {
+      aspect-ratio: 4/3;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .card-thumb .placeholder { font-size: 2rem; opacity: 0.35; }
+    .card-body { padding: 0.75rem 0.85rem 0.9rem; }
+    .card-body h3 { font-size: 1rem; line-height: 1.25; }
+    .card-meta { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+    .detail { padding: 0; overflow: hidden; }
+    .detail-empty {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+    }
+    .detail-inner { padding: 1.25rem 1.5rem 1.75rem; }
+    .detail-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .detail-head h2 { font-size: 1.75rem; line-height: 1.2; }
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .recipe-images { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+    .recipe-images .images-hint { margin: 0 0 0.65rem; font-size: 0.82rem; color: var(--muted); }
+    .thumbs { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .thumb-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+    .thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 2px solid var(--line);
+      cursor: zoom-in;
+      padding: 0;
+      background: var(--accent-soft);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .thumb:hover { border-color: var(--accent-line); transform: scale(1.04); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb.is-main { border-color: var(--accent); }
+    .thumb-star {
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--line);
+      padding: 0.1rem 0.25rem;
+    }
+    .thumb-star.is-main { color: var(--accent); }
+    .thumb-star:hover { color: var(--accent-hover); }
+    /* Visor ampliado */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(17, 24, 39, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: min(94vw, 1100px);
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 1.35rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .lightbox-close:hover { background: rgba(255, 255, 255, 0.22); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.75rem;
+      height: 2.75rem;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .lightbox-nav:hover { background: rgba(255, 255, 255, 0.22); }
+    .lightbox-nav:disabled { opacity: 0.25; cursor: default; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.85rem;
+    }
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+    @media (max-width: 720px) { .cols { grid-template-columns: 1fr; } }
+    .section h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--accent-soft);
+    }
+    .section ul, .section ol { margin: 0; padding-left: 1.2rem; }
+    .section li { margin-bottom: 0.45rem; line-height: 1.45; }
+    .section ol li { padding-left: 0.15rem; }
+    .note {
+      margin-top: 1rem;
+      padding: 0.75rem 0.9rem;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .web-link { margin-top: 0.75rem; font-size: 0.92rem; }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.45);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+    .modal-backdrop.open { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      width: min(640px, 100%);
+      max-height: min(90vh, 800px);
+      display: flex;
+      flex-direction: column;
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.2s;
+    }
+    .modal-backdrop.open .modal { transform: none; }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.15rem 1.35rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .modal-header h2 { font-size: 1.35rem; }
+    .modal-body {
+      padding: 1.25rem 1.35rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      padding: 1rem 1.35rem;
+      border-top: 1px solid var(--line);
+      background: var(--surface-2);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .form-row { margin-bottom: 1rem; }
+    .form-row label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .form-hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+    .tag-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .tag-check:has(input:checked) {
+      background: var(--accent-soft);
+      border-color: var(--accent-line);
+      color: var(--accent-hover);
+    }
+    .tag-check input { accent-color: var(--accent); }
+    .img-checks {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 0.5rem;
+    }
+    .img-check {
+      position: relative;
+      border: 2px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 1;
+    }
+    .img-check:has(input:checked) { border-color: var(--accent); }
+    .img-check input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+    .img-check img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .form-images-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+    .form-images-toolbar .form-hint { margin: 0; flex: 1 1 100%; }
+    .form-images-group { margin-bottom: 0.75rem; }
+    .form-images-group > .form-hint { margin: 0 0 0.45rem; }
+    .img-check-imported { border-style: dashed; }
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      padding: 0.85rem 1.15rem;
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.25s, opacity 0.25s;
+      pointer-events: none;
+      max-width: 320px;
+    }
+    .toast.show { transform: none; opacity: 1; }
+    .toast.error { background: var(--danger); }
+    .cards-empty {
+      flex: 1 1 100%;
+      min-width: 100%;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+    }
+    .category-field { display: flex; flex-direction: column; gap: 0.5rem; }
+    .category-manager-panel {
+      margin-top: 0.5rem;
+      padding: 0.85rem;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+    }
+    .category-manager-panel[hidden] { display: none; }
+    .category-list { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 0.65rem; }
+    .category-row { display: flex; gap: 0.45rem; align-items: center; }
+    .category-row input { flex: 1; min-width: 0; }
+    .category-manager-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">🍳</div>
+        <div>
+          <h1>Recetario</h1>
+          <p>Tu colección personal de recetas. Busca, filtra y gestiona ingredientes y preparación.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn btn-primary" id="btnNewRecipe">+ Nueva receta</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="panel filters" aria-label="Filtros">
+        <h2>Buscar y filtrar</h2>
+        <div class="field">
+          <label for="search">Nombre</label>
+          <input id="search" type="search" placeholder="Ej. pollo, crema, hummus…" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="category">Tipo de receta</label>
+          <select id="category">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Características</label>
+          <div id="tagFilters" class="tags"></div>
+        </div>
+        <div class="field checks">
+          <label><input type="checkbox" id="onlyPhoto" /> Solo con foto</label>
+          <label><input type="checkbox" id="onlyPrep" /> Solo con preparación escrita</label>
+        </div>
+        <button type="button" class="btn-reset" id="resetFilters">Restablecer filtros</button>
+      </aside>
+
+      <div class="main-col">
+        <div class="results-bar">
+          <span id="resultCount">Cargando…</span>
+          <span id="saveHint" class="save-hint" hidden>Guardado</span>
+        </div>
+        <div id="cards" class="cards" role="list"></div>
+
+        <article id="detail" class="panel detail" aria-live="polite">
+          <div class="detail-empty">Selecciona una receta para ver ingredientes, preparación e imágenes.</div>
+        </article>
+      </div>
+    </div>
+
+    <footer>
+      <span>Basado en «Recetas caseras.docx» · <span id="recipeTotal"></span> recetas</span>
+      <span id="saveFooterNote">Los cambios se guardan en el servidor</span>
+    </footer>
+  </div>
+
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Nueva receta</h2>
+        <button type="button" class="btn btn-ghost btn-sm" id="modalClose" aria-label="Cerrar">✕</button>
+      </div>
+      <form id="recipeForm" class="modal-body">
+        <div class="form-row">
+          <label for="formName">Nombre *</label>
+          <input id="formName" type="text" required placeholder="Ej. Pollo al curry" autocomplete="off" />
+        </div>
+        <div class="form-row">
+          <label for="formCategory">Categoría *</label>
+          <div class="category-field">
+            <select id="formCategory"></select>
+            <input id="formCategoryNew" type="text" placeholder="O escribe una categoría nueva" autocomplete="off" />
+            <p class="form-hint">Elige una categoría existente o escribe un nombre nuevo.</p>
+            <button type="button" class="btn btn-ghost btn-sm" id="toggleCategoryManager" aria-expanded="false">
+              Gestionar categorías (renombrar, añadir o eliminar)
+            </button>
+            <div id="categoryManager" class="category-manager-panel" hidden>
+              <p class="form-hint" style="margin:0 0 0.5rem">Edita los nombres abajo. Al guardar la receta se aplican los cambios a todas las recetas de esa categoría.</p>
+              <div id="categoryList" class="category-list"></div>
+              <div class="category-manager-actions">
+                <button type="button" class="btn btn-secondary btn-sm" id="btnAddCategory">+ Añadir categoría</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Características</label>
+          <div id="formTags" class="tag-checks"></div>
+        </div>
+        <div class="form-row">
+          <label for="formIngredients">Ingredientes</label>
+          <textarea id="formIngredients" rows="5" placeholder="Un ingrediente por línea"></textarea>
+          <p class="form-hint">Escribe cada ingrediente en una línea distinta.</p>
+        </div>
+        <div class="form-row">
+          <label for="formPreparation">Preparación</label>
+          <textarea id="formPreparation" rows="5" placeholder="Un paso por línea"></textarea>
+          <p class="form-hint">Cada línea será un paso numerado.</p>
+        </div>
+        <div class="form-row">
+          <label for="formWeb">Enlace o referencia</label>
+          <input id="formWeb" type="text" placeholder="https://… o texto de referencia" />
+        </div>
+        <div class="form-row" id="formImagesRow">
+          <label>Imágenes</label>
+          <div class="form-images-toolbar">
+            <button type="button" class="btn btn-secondary btn-sm" id="btnImportImages">Importar imágenes</button>
+            <input type="file" id="formImageImport" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden />
+            <p class="form-hint">Marca las que quieras usar. Las importadas se guardan en este navegador (JPG, PNG, WebP).</p>
+          </div>
+          <div id="formImages"></div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="modalCancel">Cancelar</button>
+        <button type="submit" form="recipeForm" class="btn btn-primary" id="modalSave">Guardar receta</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">‹</button>
+    <img id="lightboxImg" alt="" />
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Siguiente">›</button>
+    <span id="lightboxCaption" class="lightbox-caption"></span>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script id="recipes-data" type="application/json">{"title": "Recetas caseras", "source": "Recetas caseras.docx", "tagLabels": {"plato-principal": "Plato principal", "crema": "Crema / sopa", "caldo": "Caldo", "postre": "Postre / bizcocho", "picoteo": "Picoteo / entrante", "consejo": "Consejo", "bebida": "Bebida / batido", "saludable": "Saludable", "rapido": "Rápida / fácil", "horno": "Al horno", "vegetariano": "Vegetariana", "pescado": "Pescado", "pollo": "Pollo / ave", "huevo": "Con huevo", "sin-lactosa": "Sin lactosa"}, "gallery": ["image1.png", "image2.jpeg", "image3.png", "image4.jpeg", "image5.png", "image6.png", "image7.png", "image8.png", "image9.png"], "categories": ["BEBIDAS", "BIZCOCHOS", "CALDOS", "CONSEJOS", "CREMAS", "PICOTEOS", "PLATOS PRINCIPALES"], "recipes": [{"name": "POLLO CREMOSO CON YOGUR AL CURRY", "category": "PLATOS PRINCIPALES", "ingredients": ["250-300 g de pechuga de pollo cocinada", "1/2 aguacate", "1/2 pimiento verde", "1/2 pimiento rojo pequeño picante o dulce", "1 ramita de apio", "1/2 cebolla roja o chalota", "200-250 ml de yogur natural tipo griego", "1 cucharadita de mostaza de Dijon", "1/2 cucharadita de salsa Worcestershire", "zumo de 1/2 lima o limón", "1/4 cucharadita de ajo granulado", "1 cucharadita de mezcla de especias para curry", "1 cucharadita de cúrcuma", "1/2 cucharadita de comino", "1 pizca de pimentón picante", "perejil fresco picado", "aceite de oliva virgen extra, pimienta negra y sal al gusto."], "preparation": ["Lavar y picar, retirando las semillas, los pimientos. Picar la cebolla roja o chalota, picar y aplastar el aguacate y picar el apio, en piezas muy finas. Mezclar con el pollo añadiendo un puñado de perejil fresco picado.", "Colocar el yogur en un cuenco aparte y agregar todas las especias, mostaza, zumo de lima o limón, la salsa Worcestershire, un poco de aceite de oliva (opcional), pimienta negra y sal al gusto. Mezclar muy bien y comprobar el punto de sal. Incorporar la salsa a los demás ingredientes y mezclar hasta tener una combinación homogénea"], "images": ["image1.png"], "web": "WEB Pollo cremoso con Yogur. Receta saludable (vitonica.com)", "tags": ["plato-principal", "pollo", "saludable"], "id": "pollo-cremoso-con-yogur-al-curry", "hasPreparation": true, "hasImage": true}, {"name": "MERLUZA EN SALSA VERDE", "category": "PLATOS PRINCIPALES", "ingredients": ["400 gr de lomos de merluza sin espinas (unos 4 o 5)", "2 dientes de ajo picaditos", "2 cucharadas de aceite de oliva virgen extra", "1 cucharada sopera de harina (unos 20 gr)", "100 ml de vino blanco", "300 ml de caldo de pescado", "20 gr de perejil fresco picadito", "120 gr de guisantes en lata escurridos", "Sal y pimienta negra al gusto"], "preparation": [], "images": [], "web": "WEB Merluza en Salsa Verde | Receta de Pescado MUY Fácil y Deliciosa (youtube.com)", "tags": ["pescado", "plato-principal", "rapido"], "id": "merluza-en-salsa-verde", "hasPreparation": false, "hasImage": false}, {"name": "HUMMUS", "category": "PLATOS PRINCIPALES", "ingredients": ["Garbanzos cocidos 400 g", "Aceite de oliva virgen extra 70 g", "Semillas de sésamo tostado 60 g", "Agua 50 ml", "Diente de ajo 1", "Sal (aprox)5 g", "Zumo de limón 30 g", "Comino molido (aprox)5 g", "Yogur natural opcional 100 g"], "preparation": ["Lavamos bien los garbanzos para retirar el líquido en el que vienen sumergidos en la conserva. Escurrimos e introducimos en el vaso de un robot de cocina. Añadimos el diente de ajo pelado (si retiramos el germen queda más suave), el sésamo, el comino, la sal, el zumo de limón y el agua.", "Trituramos hasta obtener una masa semi homogénea antes de incorporar el aceite de oliva virgen extra. Continuamos triturando unos minutos o hasta obtener una mezcla cremosa. Podemos aportar más cremosidad al hummus de garbanzos si añadimos un poco de yogur natural. Muchos restaurantes libaneses lo utilizan y queda estupendo, pero esto es completamente opcional.", "En el momento de servir rociamos con un chorrito de aceite de oliva virgen extra, semillas variadas y pimentón dulce. Otros toppings que podemos añadir son aceitunas o perejil picado. Al gusto. Servir con panecillos o palitos de zanahoria."], "images": ["image2.jpeg"], "web": "WEB: directo al paladar", "tags": ["plato-principal", "vegetariano"], "id": "hummus", "hasPreparation": true, "hasImage": true}, {"name": "SALMON A LA NARANJA", "category": "PLATOS PRINCIPALES", "ingredients": ["1 lomo de salmón", "1 diente de ajo", "1 rama de romero fresco", "75 ml de caldo de verduras", "Media naranja", "5 ml de zumo de limón", "5 ml de miel", "5 g de harina refinada de maíz (maicena)", "Aceite de oliva", "Pimenta negra", "sal"], "preparation": [], "images": [], "web": "(1025) SALMÓN A LA NARANJA y MIEL, una RECETA FÁCIL Y RÁPIDA que parece de restaurante de lujo - YouTube", "tags": ["pescado", "plato-principal", "rapido"], "id": "salmon-a-la-naranja", "hasPreparation": false, "hasImage": false}, {"name": "BERENJENA PARMESANA", "category": "PLATOS PRINCIPALES", "ingredients": ["Tomate 800 g", "Berenjena 3", "Dientes de ajo 2", "Aceite de oliva virgen extra 60 ml", "Tomate frito casero 50 ml", "Queso Parmesano 90 g", "Huevos 1", "Orégano seco", "Albahaca", "Sal y pimienta al gusto"], "preparation": ["Lavar y cortar las berenjenas longitudinalmente. Ponerlas en una rejilla encima de una fuente, espolvorearles sal y dejarlas durante quince minutos para que suden. Cuando pase el tiempo lavarlas y secarlas bien con un papel de cocina.", "Mientras, lavar y pelar los tomates, cortarlos en cuadraditos. Poner una sartén al fuego con cuatro cucharadas de aceite y sofreír los ajos con cuidado de que no se quemen. Añadir los tomates y sofreírlos durante unos ocho minutos con un poquito de sal, añadir seguidamente las dos cucharadas de tomate frito. Precalentar el horno a 180 grados.", "Calentar una plancha pincelada con un poco de aceite y pasar por ella las lonchas de berenjena hasta que se hagan un poco. Ir colocándolas en una fuente refractaria, añadir una capa de salsa de tomate, espolvorear un poco del queso, añadir orégano y unas hojas de albahaca. Ir repitiendo esta operación hasta acabar con los ingredientes, teniendo cuidado de que nos quede una capa de berenjenas para el final. Batir el huevo y añadirlo por encima, espolvorear Parmesano y unas pocas de hierbas aromáticas y hornear durante veinte minutos o hasta que veamos la cubierta dorada."], "images": ["image3.png"], "web": null, "tags": ["horno", "huevo", "plato-principal", "vegetariano"], "id": "berenjena-parmesana", "hasPreparation": true, "hasImage": true}, {"name": "TORTILLA PATATAS", "category": "PLATOS PRINCIPALES", "ingredients": ["Patatas 1 Kg", "Huevos 6", "Cebolla", "Sal, aceite."], "preparation": ["Cortar patata laminas y poner en remojo en agua fría.", "Aceite sarten caliente 8/10.", "Poner patata bien escurrida añadiendo poco en poco. 5 min sin tocar con fuego alto. Pasados 5-10 min remover. Cuando este patata blanda retirar aceite. Subir fuego al 8 y salar. Ir tostando la patata fuego fuerte.", "Huevos. 1 Kg patata/6-8 huevos medianos. Tº ambiente. Remover.", "Cebolla pochar a parte.", "Añadir las patatas al bol de los huevos + 2 yemas crudas + cebolla.", "5-10min reposo.", "sartén caliente 6/10. Pelin aceite para que no se pegue."], "images": [], "web": "https://www.youtube.com/shorts/KS8M0xAna7s", "tags": ["huevo", "plato-principal", "rapido"], "id": "tortilla-patatas", "hasPreparation": true, "hasImage": false}, {"name": "MAYONESA CON HUEVOS COCIDOS", "category": "PLATOS PRINCIPALES", "ingredients": ["4 huevos cocidos", "75 ml de agua", "50 ml de aceite", "Jugo de ½ limón", "½ cucharadita de sal o al gusto", "OPCIONAL: 1 diente de ajo", "OPCIONAL: ½ cucharadita de mostaza"], "preparation": [], "images": [], "web": "WEB MAYONESA CON HUEVO COCIDO Y SIN LECHE DELICIOSA Y MUY FÁCIL (youtube.com)", "tags": ["huevo", "plato-principal", "rapido", "sin-lactosa"], "id": "mayonesa-con-huevos-cocidos", "hasPreparation": false, "hasImage": false}, {"name": "HABAS ESPARRAGADAS CON HUEVO", "category": "PLATOS PRINCIPALES", "ingredients": ["Habas peladas. 400 g", "Cebolla ½", "Ajo 4", "Pan 2 rebanadas medias", "Comino grano", "Pimentón 1 cuchadita", "Huevos 2", "Sal, Aceite", "Agua"], "preparation": [], "images": [], "web": null, "tags": ["huevo", "plato-principal"], "id": "habas-esparragadas-con-huevo", "hasPreparation": false, "hasImage": false}, {"name": "HUEVOS AL HORNO", "category": "PLATOS PRINCIPALES", "ingredients": ["2 huevos", "1 diente de ajo", "1 cebolla", "Medio pimiento verde", "Medio pimiento rojo", "100 ml de tomate frito o tomate triturado", "Chorizo, jamón o similar en taquitos", "Guisantes", "Sal", "1.- Comenzamos haciendo un buen sofrito a fuego lento de ajo, cebolla y pimientos. Lo pochamos durante unos 20 minutos.", "2.- Pasado ese tiempo incorporamos 2 o 3 tomates en dados o podemos ponerle tomate frito, eso depende de lo que tengamos a mano. Recuerda que estos platos son para salir del paso.", "3.- Una vez tengamos el sofrito hecho yo lo paso a una cazuela de barro y en ella pongo chorizo picado y guisantes.", "4.- Le ponemos ahora los dos huevos, un poco de sal y dejamos cocinar en el horno hasta que se cuaje durante unos 6 o 7 minutos. Servimos con pan y a disfrutar."], "preparation": [], "images": ["image4.jpeg"], "web": null, "tags": ["horno", "huevo", "plato-principal", "vegetariano"], "id": "huevos-al-horno", "hasPreparation": false, "hasImage": true}, {"name": "CREMA DE GUISANTES", "category": "CREMAS", "ingredients": ["Ajo 1", "Cebolla 1", "Puerro 1", "Sal", "Guisantes 1 Kg congelado", "Pimienta blanca", "Gengibre", "Albahaca", "Perejil fresco", "Aguacate", "Aceite oliva"], "preparation": [], "images": [], "web": null, "tags": ["crema", "vegetariano"], "id": "crema-de-guisantes", "hasPreparation": false, "hasImage": false}, {"name": "CREMA FRIA GUISANTES", "category": "CREMAS", "ingredients": ["Cebolla 1", "Aceite oliva", "Mantequilla 14 g", "Guisantes 400 g", "Sal", "Patata 200 g", "Caldo verduras 850 ml", "Menta o hierbabuena fresca 10 hojas"], "preparation": [], "images": [], "web": null, "tags": ["crema", "vegetariano"], "id": "crema-fria-guisantes", "hasPreparation": false, "hasImage": false}, {"name": "VICHYSOISSE CALABACIN", "category": "CREMAS", "ingredients": ["Calabacines 3", "Cebollas 2", "Patata 1", "Caldo verduras 1,5l", "Nata 200 ml", "Mantequilla 50 g", "Aceite oliva", "Pan tostado para tropezones", "Dados jamons serrano", "Sal"], "preparation": [], "images": [], "web": null, "tags": ["crema", "vegetariano"], "id": "vichysoisse-calabacin", "hasPreparation": false, "hasImage": false}, {"name": "VICHYSOISSEE ARGUIÑANO", "category": "CREMAS", "ingredients": ["Medio pollo", "Rama perejil", "Puerro 4 con la parte blanca", "Patata", "Cebolleta 1", "Zanahoria 1", "Sal", "Mantequilla", "Nata liquida", "Cebollino"], "preparation": [], "images": [], "web": null, "tags": ["crema", "pollo", "vegetariano"], "id": "vichysoissee-arguinano", "hasPreparation": false, "hasImage": false}, {"name": "CALDO DE VERDURAS", "category": "CALDOS", "ingredients": ["2 zanahorias", "2 tomates maduros", "2 dientes de ajo", "1 cebolla", "1 puerro", "Perejil fresco", "1 hoja de laurel", "5 champiñones", "Aceite de oliva virgen extra", "Sal (al gusto de cada casa)", "Preparación de caldo de verduras express", "Pelamos los champiñones, así les retiraremos los posibles restos de tierra que puedan tener. Otra forma de limpiarlos sería lavándolos bajo el grifo, pero así se encharcarían. También podríamos limpiarlos con un paño húmedo si no estuvieran demasiado sucios.", "Pelamos los ajos y los cortamos a la mitad. Pelamos la cebolla y la cortamos en cuartos. Pelamos la zanahoria y la cortamos en trozos grandes. Lavamos bien el puerro y lo cortamos en 4 trozos. Lavamos los tomates y los cortamos en 4 partes.", "En una cazuela calentamos un chorrito de aceite de oliva virgen extra. Añadimos la cebolla, el puerro y el ajo troceado. Sofreímos las verduras durante 5 minutos, a fuego medio alto sin parar de remover. Añadimos los champiñones, las zanahorias y la hojita de laurel. Continuamos el sofrito 5 minutos más removiendo de vez en cuando. Por último, incorporamos los tomates en cuartos, el perejil y salamos.", "Cocción y presentación del caldo de verduras", "Cubrimos las verduras de agua, alrededor de 1,5 litros. Tapamos la cazuela y contamos unos 35-40 minutos de cocción desde el momento en que comience a hervir. Una vez cocinadas las verduras, colamos el cado y lo tendremos listo para utilizar en la preparación que deseemos.", "Podremos reservarlo para futuras preparaciones si lo almacenamos en botes de cristal y lo congelamos o lo guardamos al vacío."], "preparation": [], "images": [], "web": "WEB. Recetas de rechupete", "tags": ["caldo", "vegetariano"], "id": "caldo-de-verduras", "hasPreparation": false, "hasImage": false}, {"name": "BIZCOCHO AVENA, ZANAHORIA Y PLATANO", "category": "BIZCOCHOS", "ingredients": ["Huevos 3", "Azucar morena ½ taza", "Aceite oliva ¾ taza", "Zanahoria 4 zanahorias", "Harina avena 2 tazas", "Levadura 1 sobre", "Canela molida 1cu", "1-2 puños avena ojuela", "Platanos maduros 2", "Nueces"], "preparation": [], "images": [], "web": null, "tags": ["huevo", "postre", "vegetariano"], "id": "bizcocho-avena-zanahoria-y-platano", "hasPreparation": false, "hasImage": false}, {"name": "MAGDALENAS CHOCO", "category": "BIZCOCHOS", "ingredients": ["2 huevos", "1 cuch yogurt", "Cacahuete desgrasado polvo", "Harina avena 2 cuch", "Levadura", "Choco pepitas 85%"], "preparation": [], "images": [], "web": null, "tags": ["huevo", "postre"], "id": "magdalenas-choco", "hasPreparation": false, "hasImage": false}, {"name": "TORTILLA VERDURAS", "category": "PICOTEOS", "ingredients": ["Pepino ½", "Zanahoria 1", "Avena", "3 huevos", "Sal, pimienta", "Ajo polvo", "Oregano", "Queso 100gr", "Rayarlo todo, añadir el queso al final. En una sarten con una espátula ir haciendo tortitas."], "preparation": [], "images": [], "web": "https://www.youtube.com/shorts/z1kXCc8OkoU", "tags": ["huevo", "picoteo", "rapido", "vegetariano"], "id": "tortilla-verduras", "hasPreparation": false, "hasImage": false}, {"name": "SANDWICHS", "category": "PICOTEOS", "ingredients": ["#recetas #postressinazucar #shorts"], "preparation": ["Lata atún", "1 huevo cocido", "1 queso crenma", "1 queso cotagge", "Especias", "Pan tostado", "BEBIDAS", "SANGRIA", "LIMONADA AMERICANA LIMA LIMON", "BATIDOS"], "images": [], "web": null, "tags": ["huevo", "picoteo", "rapido"], "id": "sandwichs", "hasPreparation": true, "hasImage": false}, {"name": "DIVISION NUTRICIONAL", "category": "CONSEJOS", "ingredients": ["Dividir plato 4 partes"], "preparation": ["Comida saludable", "Yogurt griego"], "images": ["image5.png"], "web": null, "tags": ["consejo", "saludable"], "id": "division-nutricional", "hasPreparation": true, "hasImage": true}, {"name": "COINTREAU & TONIC", "category": "BEBIDAS", "ingredients": ["Cointreau 5 ml"], "preparation": ["Tonica 20 ml", "Naranja o lima", "-Llenar un vaso con hielos y añadir 5 cl de Cointreau. -Añadir luego 20 cl de tónica previamente enfriada y decorar el vaso con un twist de lima o de naranja."], "images": [], "web": null, "tags": ["bebida"], "id": "cointreau-tonic", "hasPreparation": true, "hasImage": false}, {"name": "Batidos", "category": "BEBIDAS", "ingredients": ["Platano 1", "Yogurt desnatados 2", "Salvado de avena 50 g", "Canela", "Azúcar 1 cuch", "Fresas, nueces, leche", "Leche. Proteinas animal", "Fresas. CH", "Nueces 30 g", "Leche desnatada 1 vaso", "Fresas 4 grandes", "Clara huevo liquida 200 ml. Precalentar", "Salvado de avena 40 g", "Azúcar", "Manzana, leche, vainilla", "Manzanas 2", "Platano 1", "Proteínas", "Vaso leche", "Medio vaso zumo naranja", "Fresas, plátano, leche, avena", "Fresas 4 grandes", "Plátano 1", "Vaso leche desnatada", "Salvado de avena 40 g"], "preparation": ["Plátano. CH rápidos", "Yogur, proteínas, avena. CH lentos"], "images": [], "web": null, "tags": ["bebida", "huevo", "rapido"], "id": "batidos", "hasPreparation": true, "hasImage": false}]}</script>
+  <script>
+    const STORAGE_KEY = "recetario-imagen-seleccionada";
+    const STORAGE_RECIPES = "recetario-recetas-v1";
+    const STORAGE_CATEGORIES = "recetario-categorias-v1";
+    const STORAGE_IMPORTED = "recetario-imagenes-importadas-v1";
+
+    let DATA = null;
+    let selectedId = null;
+    let imageChoices = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    let importedImages = {};
+    let useBackend = false;
+    let editingId = null;
+    let toastTimer = null;
+    let lightboxFiles = [];
+    let lightboxIndex = 0;
+
+    async function loadBaseData() {
+      const embedded = document.getElementById("recipes-data");
+      if (embedded.textContent.trim()) {
+        return JSON.parse(embedded.textContent);
+      }
+      const res = await fetch("data/recipes.json");
+      if (!res.ok) throw new Error("No se pudo cargar data/recipes.json");
+      return res.json();
+    }
+
+    function loadImportedImages() {
+      try {
+        importedImages = JSON.parse(localStorage.getItem(STORAGE_IMPORTED) || "{}");
+      } catch (_) {
+        importedImages = {};
+      }
+    }
+
+    function updateSaveHint() {
+      const hint = document.getElementById("saveHint");
+      const foot = document.getElementById("saveFooterNote");
+      hint.hidden = false;
+      if (useBackend) {
+        hint.textContent = "Guardado en el servidor";
+        foot.textContent = "Los cambios se guardan en el servidor (data/state.json)";
+      } else {
+        hint.textContent = "Guardado en este navegador";
+        foot.textContent = "Los cambios se guardan localmente en tu navegador";
+      }
+    }
+
+    function applyImportedImagesFromPayload(map) {
+      importedImages = {};
+      for (const [id, meta] of Object.entries(map || {})) {
+        importedImages[id] = { name: meta.name, file: meta.file, data: meta.data };
+      }
+    }
+
+    function importedImagesPayload() {
+      return Object.fromEntries(
+        Object.entries(importedImages).map(([id, v]) => {
+          const entry = { name: v.name };
+          if (v.file) entry.file = v.file;
+          if (v.data && !useBackend) entry.data = v.data;
+          return [id, entry];
+        })
+      );
+    }
+
+    function persistImportedImages() {
+      persistState();
+    }
+
+    function isImportedImageId(id) {
+      return String(id).startsWith("local:");
+    }
+
+    function imageSrc(file) {
+      if (!file) return "";
+      if (isImportedImageId(file)) {
+        const meta = importedImages[file];
+        if (meta?.file) return "images/" + meta.file;
+        if (meta?.data) return meta.data;
+        return "";
+      }
+      return "images/" + file;
+    }
+
+    function readImageFile(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function compressImageDataUrl(dataUrl, maxDim, quality) {
+      maxDim = maxDim || 1400;
+      quality = quality || 0.82;
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          let w = img.width;
+          let h = img.height;
+          if (w <= maxDim && h <= maxDim) {
+            resolve(dataUrl);
+            return;
+          }
+          const scale = maxDim / Math.max(w, h);
+          w = Math.round(w * scale);
+          h = Math.round(h * scale);
+          const canvas = document.createElement("canvas");
+          canvas.width = w;
+          canvas.height = h;
+          canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+          const mime = dataUrl.startsWith("data:image/png") ? "image/png" : "image/jpeg";
+          resolve(canvas.toDataURL(mime, quality));
+        };
+        img.onerror = () => resolve(dataUrl);
+        img.src = dataUrl;
+      });
+    }
+
+    async function handleImportImages(fileList) {
+      const files = [...fileList].filter((f) => f.type.startsWith("image/"));
+      if (!files.length) {
+        showToast("Selecciona archivos de imagen", true);
+        return;
+      }
+
+      const selected = new Set(
+        [...document.querySelectorAll("#formImages input:checked")].map((cb) => cb.value)
+      );
+      const newIds = [];
+
+      if (useBackend) {
+        for (const file of files) {
+          const fd = new FormData();
+          fd.append("image", file);
+          try {
+            const res = await fetch("/api/images", { method: "POST", body: fd });
+            if (!res.ok) continue;
+            const item = await res.json();
+            importedImages[item.id] = { name: item.name, file: item.file };
+            newIds.push(item.id);
+            selected.add(item.id);
+          } catch (_) {
+            /* omitir */
+          }
+        }
+      } else {
+        for (const file of files) {
+          try {
+            let dataUrl = await readImageFile(file);
+            dataUrl = await compressImageDataUrl(dataUrl);
+            const id = "local:" + crypto.randomUUID();
+            importedImages[id] = { data: dataUrl, name: file.name };
+            newIds.push(id);
+            selected.add(id);
+          } catch (_) {
+            /* omitir archivo con error */
+          }
+        }
+      }
+
+      if (!newIds.length) {
+        showToast("No se pudieron importar las imágenes", true);
+        return;
+      }
+
+      if (!useBackend) {
+        try {
+          localStorage.setItem(STORAGE_IMPORTED, JSON.stringify(importedImages));
+          updateSaveHint();
+        } catch (_) {
+          newIds.forEach((id) => delete importedImages[id]);
+          showToast("Espacio insuficiente en el navegador para guardar las imágenes", true);
+          return;
+        }
+      } else {
+        await persistState();
+      }
+
+      renderFormImages(selected);
+      showToast(
+        newIds.length === 1 ? "1 imagen importada" : `${newIds.length} imágenes importadas`
+      );
+    }
+
+    function createImageCheckbox(file, checked) {
+      const lbl = document.createElement("label");
+      lbl.className = "img-check" + (isImportedImageId(file) ? " img-check-imported" : "");
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.value = file;
+      cb.checked = checked;
+      const img = document.createElement("img");
+      img.src = imageSrc(file);
+      img.alt = importedImages[file]?.name || file;
+      lbl.append(cb, img);
+      return lbl;
+    }
+
+    function renderFormImages(selectedIds) {
+      const container = document.getElementById("formImages");
+      const row = document.getElementById("formImagesRow");
+      container.innerHTML = "";
+
+      const gallery = DATA.gallery || [];
+      const importedIds = Object.keys(importedImages);
+
+      if (!gallery.length && !importedIds.length) {
+        row.hidden = false;
+        container.innerHTML = '<p class="form-hint">No hay imágenes. Usa «Importar imágenes» para añadir las tuyas.</p>';
+        return;
+      }
+
+      row.hidden = false;
+      const selected = selectedIds instanceof Set ? selectedIds : new Set(selectedIds || []);
+
+      if (gallery.length) {
+        const group = document.createElement("div");
+        group.className = "form-images-group";
+        group.innerHTML = '<p class="form-hint">Galería del recetario</p>';
+        const grid = document.createElement("div");
+        grid.className = "img-checks";
+        gallery.forEach((file) => grid.appendChild(createImageCheckbox(file, selected.has(file))));
+        group.appendChild(grid);
+        container.appendChild(group);
+      }
+
+      if (importedIds.length) {
+        const group = document.createElement("div");
+        group.className = "form-images-group";
+        group.innerHTML = "<p class=\"form-hint\">Imágenes importadas</p>";
+        const grid = document.createElement("div");
+        grid.className = "img-checks";
+        importedIds.forEach((id) => grid.appendChild(createImageCheckbox(id, selected.has(id))));
+        group.appendChild(grid);
+        container.appendChild(group);
+      }
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch("/api/recetario");
+        if (res.ok) {
+          useBackend = true;
+          const data = await res.json();
+          imageChoices = data.imageChoices || {};
+          applyImportedImagesFromPayload(data.importedImages);
+          delete data.imageChoices;
+          delete data.importedImages;
+          syncCategoriesWithRecipes(data);
+          updateSaveHint();
+          return data;
+        }
+      } catch (_) {
+        /* servidor no disponible */
+      }
+
+      useBackend = false;
+      loadImportedImages();
+      const base = await loadBaseData();
+      const saved = localStorage.getItem(STORAGE_RECIPES);
+      if (saved) {
+        try {
+          base.recipes = JSON.parse(saved);
+        } catch (_) { /* usar base */ }
+      }
+      const savedCats = localStorage.getItem(STORAGE_CATEGORIES);
+      if (savedCats) {
+        try {
+          base.categories = JSON.parse(savedCats);
+        } catch (_) { /* utilizar base */ }
+      }
+      syncCategoriesWithRecipes(base);
+      updateSaveHint();
+      return base;
+    }
+
+    function syncCategoriesWithRecipes(data) {
+      const set = new Set(data.categories || []);
+      (data.recipes || []).forEach((r) => {
+        if (r.category) set.add(r.category);
+      });
+      data.categories = [...set].sort((a, b) => a.localeCompare(b, "es"));
+    }
+
+    async function persistState() {
+      if (!DATA) return;
+      document.getElementById("recipeTotal").textContent = DATA.recipes.length;
+      updateSaveHint();
+
+      if (useBackend) {
+        try {
+          const res = await fetch("/api/recetario", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              recipes: DATA.recipes,
+              categories: DATA.categories,
+              imageChoices,
+              importedImages: importedImagesPayload(),
+            }),
+          });
+          if (!res.ok) throw new Error("save failed");
+        } catch (_) {
+          showToast("Error al guardar en el servidor", true);
+        }
+        return;
+      }
+
+      localStorage.setItem(STORAGE_RECIPES, JSON.stringify(DATA.recipes));
+      localStorage.setItem(STORAGE_CATEGORIES, JSON.stringify(DATA.categories));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(imageChoices));
+      localStorage.setItem(STORAGE_IMPORTED, JSON.stringify(importedImages));
+    }
+
+    function persistRecipes() {
+      persistState();
+    }
+
+    function persistCategories() {
+      persistState();
+    }
+
+    function slugify(text) {
+      return String(text)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+    }
+
+    function uniqueId(name, excludeId) {
+      let id = slugify(name) || "receta";
+      let n = 1;
+      while (DATA.recipes.some((r) => r.id === id && r.id !== excludeId)) {
+        id = `${slugify(name) || "receta"}-${++n}`;
+      }
+      return id;
+    }
+
+    function parseLines(text) {
+      return String(text || "")
+        .split("\n")
+        .map((l) => l.trim())
+        .filter(Boolean);
+    }
+
+    function normalizeRecipe(recipe) {
+      recipe.ingredients = recipe.ingredients || [];
+      recipe.preparation = recipe.preparation || [];
+      recipe.images = recipe.images || [];
+      recipe.tags = recipe.tags || [];
+      recipe.hasPreparation = recipe.preparation.length > 0;
+      recipe.hasImage = recipe.images.length > 0;
+      return recipe;
+    }
+
+    function getRecipeById(id) {
+      return DATA.recipes.find((r) => r.id === id);
+    }
+
+    function openLightbox(files, startFile) {
+      if (!files.length) return;
+      lightboxFiles = files;
+      lightboxIndex = Math.max(0, files.indexOf(startFile));
+      updateLightbox();
+      document.getElementById("lightbox").classList.add("open");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("open");
+    }
+
+    function updateLightbox() {
+      const file = lightboxFiles[lightboxIndex];
+      document.getElementById("lightboxImg").src = imageSrc(file);
+      document.getElementById("lightboxImg").alt = file;
+      document.getElementById("lightboxCaption").textContent =
+        lightboxFiles.length > 1 ? `${lightboxIndex + 1} / ${lightboxFiles.length}` : "";
+      document.getElementById("lightboxPrev").disabled = lightboxIndex <= 0;
+      document.getElementById("lightboxNext").disabled = lightboxIndex >= lightboxFiles.length - 1;
+    }
+
+    function bindLightbox() {
+      document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+      document.getElementById("lightbox").addEventListener("click", (e) => {
+        if (e.target.id === "lightbox") closeLightbox();
+      });
+      document.getElementById("lightboxPrev").addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (lightboxIndex > 0) {
+          lightboxIndex--;
+          updateLightbox();
+        }
+      });
+      document.getElementById("lightboxNext").addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (lightboxIndex < lightboxFiles.length - 1) {
+          lightboxIndex++;
+          updateLightbox();
+        }
+      });
+    }
+
+    function showToast(message, isError) {
+      const el = document.getElementById("toast");
+      el.textContent = message;
+      el.className = "toast show" + (isError ? " error" : "");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
+    }
+
+    function openModal(mode, recipe) {
+      editingId = mode === "edit" && recipe ? recipe.id : null;
+      document.getElementById("modalTitle").textContent =
+        mode === "edit" ? "Editar receta" : "Nueva receta";
+      document.getElementById("formName").value = recipe?.name || "";
+      document.getElementById("formCategoryNew").value = "";
+      renderFormCategorySelect(recipe?.category || "");
+      renderCategoryManager();
+      document.getElementById("formIngredients").value = (recipe?.ingredients || []).join("\n");
+      document.getElementById("formPreparation").value = (recipe?.preparation || []).join("\n");
+      document.getElementById("formWeb").value = recipe?.web || "";
+
+      const selectedTags = new Set(recipe?.tags || []);
+      document.querySelectorAll("#formTags input").forEach((cb) => {
+        cb.checked = selectedTags.has(cb.value);
+      });
+
+      const selectedImgs = new Set(recipe?.images || []);
+      renderFormImages(selectedImgs);
+
+      const backdrop = document.getElementById("modalBackdrop");
+      backdrop.hidden = false;
+      backdrop.classList.add("open");
+      document.getElementById("formName").focus();
+    }
+
+    function closeModal() {
+      const backdrop = document.getElementById("modalBackdrop");
+      backdrop.classList.remove("open");
+      backdrop.hidden = true;
+      editingId = null;
+    }
+
+    function renderFormTags() {
+      const container = document.getElementById("formTags");
+      container.innerHTML = "";
+      Object.entries(DATA.tagLabels || {}).forEach(([id, label]) => {
+        const lbl = document.createElement("label");
+        lbl.className = "tag-check";
+        lbl.innerHTML = `<input type="checkbox" value="${id}" /> ${escapeHtml(label)}`;
+        container.appendChild(lbl);
+      });
+    }
+
+    function renderFormCategorySelect(selected) {
+      const sel = document.getElementById("formCategory");
+      const prev = selected || sel.value;
+      sel.innerHTML = '<option value="">— Seleccionar categoría —</option>';
+      DATA.categories.forEach((c) => {
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.textContent = c;
+        sel.appendChild(opt);
+      });
+      if (prev && [...sel.options].some((o) => o.value === prev)) sel.value = prev;
+    }
+
+    function createCategoryRow(originalName, value) {
+      const row = document.createElement("div");
+      row.className = "category-row";
+      row.dataset.original = originalName || "";
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = value || "";
+      input.placeholder = "Nombre de categoría";
+      input.setAttribute("aria-label", "Nombre de categoría");
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "btn btn-danger btn-sm";
+      del.textContent = "Eliminar";
+      del.addEventListener("click", () => row.remove());
+      row.append(input, del);
+      return row;
+    }
+
+    function renderCategoryManager() {
+      const list = document.getElementById("categoryList");
+      list.innerHTML = "";
+      DATA.categories.forEach((c) => list.appendChild(createCategoryRow(c, c)));
+    }
+
+    function applyCategoryManager() {
+      const rows = [...document.querySelectorAll("#categoryList .category-row")];
+      if (!rows.length) return true;
+      const targetNames = [];
+      const renames = [];
+
+      for (const row of rows) {
+        const orig = row.dataset.original || "";
+        const name = row.querySelector("input")?.value.trim();
+        if (!name) continue;
+        targetNames.push(name);
+        if (orig && orig !== name) renames.push({ from: orig, to: name });
+      }
+
+      const lower = targetNames.map((n) => n.toLowerCase());
+      if (lower.length !== new Set(lower).size) {
+        showToast("Hay categorías con el mismo nombre", true);
+        return false;
+      }
+
+      for (const { from, to } of renames) {
+        if (DATA.categories.includes(to) && from !== to) {
+          showToast(`Ya existe la categoría «${to}»`, true);
+          return false;
+        }
+      }
+
+      for (const { from, to } of renames) {
+        DATA.recipes.forEach((r) => {
+          if (r.category === from) r.category = to;
+        });
+      }
+
+      const targetSet = new Set(targetNames);
+      for (const c of DATA.categories) {
+        if (!targetSet.has(c)) {
+          const used = DATA.recipes.some((r) => r.category === c);
+          if (used) {
+            showToast(`«${c}» tiene recetas asignadas y no se puede eliminar`, true);
+            return false;
+          }
+        }
+      }
+
+      DATA.categories = [...targetSet].sort((a, b) => a.localeCompare(b, "es"));
+      persistCategories();
+      if (renames.length) persistRecipes();
+      return true;
+    }
+
+    function getFormCategory() {
+      const custom = document.getElementById("formCategoryNew").value.trim();
+      if (custom) return custom;
+      return document.getElementById("formCategory").value.trim();
+    }
+
+    function ensureCategory(name) {
+      if (!name) return false;
+      if (!DATA.categories.includes(name)) {
+        DATA.categories.push(name);
+        DATA.categories.sort((a, b) => a.localeCompare(b, "es"));
+        persistCategories();
+      }
+      return true;
+    }
+
+    function saveRecipeFromForm(e) {
+      e.preventDefault();
+      const name = document.getElementById("formName").value.trim();
+      if (!name) {
+        showToast("El nombre es obligatorio", true);
+        return;
+      }
+
+      if (!applyCategoryManager()) return;
+
+      const category = getFormCategory();
+      if (!category) {
+        showToast("Indica una categoría", true);
+        return;
+      }
+      ensureCategory(category);
+      const tags = [...document.querySelectorAll("#formTags input:checked")].map((cb) => cb.value);
+      const images = [...document.querySelectorAll("#formImages input:checked")].map((cb) => cb.value);
+      const webRaw = document.getElementById("formWeb").value.trim();
+
+      const recipe = normalizeRecipe({
+        name,
+        category,
+        tags,
+        images,
+        ingredients: parseLines(document.getElementById("formIngredients").value),
+        preparation: parseLines(document.getElementById("formPreparation").value),
+        web: webRaw || null,
+        id: editingId || uniqueId(name),
+      });
+
+      if (editingId) {
+        const idx = DATA.recipes.findIndex((r) => r.id === editingId);
+        if (idx >= 0) {
+          if (recipe.id !== editingId && imageChoices[editingId]) {
+            imageChoices[recipe.id] = imageChoices[editingId];
+            delete imageChoices[editingId];
+          }
+          DATA.recipes[idx] = recipe;
+        }
+        selectedId = recipe.id;
+        showToast("Receta actualizada");
+      } else {
+        DATA.recipes.push(recipe);
+        selectedId = recipe.id;
+        showToast("Receta añadida");
+      }
+
+      persistState();
+      closeModal();
+      renderTagFilters();
+      renderCategorySelect(true);
+      renderFormCategorySelect(category);
+      renderCards();
+      renderDetail(recipe);
+    }
+
+    function deleteRecipe(id) {
+      const recipe = getRecipeById(id);
+      if (!recipe) return;
+      if (!confirm(`¿Eliminar «${recipe.name}»? Esta acción no se puede deshacer.`)) return;
+
+      DATA.recipes = DATA.recipes.filter((r) => r.id !== id);
+      delete imageChoices[id];
+      persistState();
+
+      if (selectedId === id) {
+        selectedId = DATA.recipes[0]?.id || null;
+      }
+
+      showToast("Receta eliminada");
+      renderTagFilters();
+      renderCategorySelect(true);
+      renderCards();
+      if (selectedId) {
+        renderDetail(getRecipeById(selectedId));
+      } else {
+        document.getElementById("detail").innerHTML =
+          '<div class="detail-empty">No hay recetas. Pulsa «Nueva receta» para empezar.</div>';
+      }
+    }
+
+    function bindCrud() {
+      document.getElementById("btnNewRecipe").addEventListener("click", () => openModal("new"));
+      document.getElementById("btnImportImages").addEventListener("click", () => {
+        document.getElementById("formImageImport").click();
+      });
+      document.getElementById("formImageImport").addEventListener("change", (e) => {
+        if (e.target.files?.length) handleImportImages(e.target.files);
+        e.target.value = "";
+      });
+      document.getElementById("modalClose").addEventListener("click", closeModal);
+      document.getElementById("modalCancel").addEventListener("click", closeModal);
+      document.getElementById("recipeForm").addEventListener("submit", saveRecipeFromForm);
+      document.getElementById("toggleCategoryManager").addEventListener("click", () => {
+        const panel = document.getElementById("categoryManager");
+        const btn = document.getElementById("toggleCategoryManager");
+        const open = panel.hidden;
+        panel.hidden = !open;
+        btn.setAttribute("aria-expanded", String(open));
+        if (open) renderCategoryManager();
+      });
+      document.getElementById("btnAddCategory").addEventListener("click", () => {
+        document.getElementById("categoryList").appendChild(createCategoryRow("", ""));
+        document.getElementById("categoryManager").hidden = false;
+        document.getElementById("toggleCategoryManager").setAttribute("aria-expanded", "true");
+      });
+      document.getElementById("formCategory").addEventListener("change", () => {
+        if (document.getElementById("formCategory").value) {
+          document.getElementById("formCategoryNew").value = "";
+        }
+      });
+      document.getElementById("formCategoryNew").addEventListener("input", () => {
+        if (document.getElementById("formCategoryNew").value.trim()) {
+          document.getElementById("formCategory").value = "";
+        }
+      });
+      document.getElementById("modalBackdrop").addEventListener("click", (e) => {
+        if (e.target.id === "modalBackdrop") closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        if (document.getElementById("lightbox").classList.contains("open")) {
+          closeLightbox();
+          return;
+        }
+        if (document.getElementById("modalBackdrop").classList.contains("open")) {
+          closeModal();
+        }
+      });
+    }
+
+    function tagLabel(id) {
+      return (DATA.tagLabels && DATA.tagLabels[id]) || id;
+    }
+
+    function extractUrl(web) {
+      if (!web) return null;
+      const m = web.match(/https?:\/\/[^\s)]+/i);
+      return m ? m[0] : null;
+    }
+
+    function recipeImages(recipe) {
+      const set = new Set(recipe.images || []);
+      return [...set];
+    }
+
+    function getSelectedImage(recipe) {
+      const imgs = recipeImages(recipe);
+      const saved = imageChoices[recipe.id];
+      if (saved) return saved;
+      if (imgs.length) return imgs[0];
+      return null;
+    }
+
+    function setSelectedImage(recipeId, file) {
+      imageChoices[recipeId] = file;
+      persistState();
+    }
+
+    function matchesFilters(recipe) {
+      const q = document.getElementById("search").value.trim().toLowerCase();
+      const cat = document.getElementById("category").value;
+      const onlyPhoto = document.getElementById("onlyPhoto").checked;
+      const onlyPrep = document.getElementById("onlyPrep").checked;
+      const activeTags = [...document.querySelectorAll(".tag-btn.active")].map((b) => b.dataset.tag);
+
+      if (cat && recipe.category !== cat) return false;
+      if (onlyPhoto && !recipe.hasImage) return false;
+      if (onlyPrep && !recipe.hasPreparation) return false;
+      if (activeTags.length && !activeTags.every((t) => recipe.tags.includes(t))) return false;
+      if (q) {
+        const blob = [recipe.name, recipe.category, ...(recipe.ingredients || []), ...(recipe.preparation || [])]
+          .join(" ")
+          .toLowerCase();
+        if (!blob.includes(q)) return false;
+      }
+      return true;
+    }
+
+    function renderTagFilters() {
+      const tags = new Set();
+      DATA.recipes.forEach((r) => r.tags.forEach((t) => tags.add(t)));
+      const container = document.getElementById("tagFilters");
+      container.innerHTML = "";
+      [...tags].sort((a, b) => tagLabel(a).localeCompare(tagLabel(b), "es")).forEach((tag) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "tag-btn";
+        btn.dataset.tag = tag;
+        btn.textContent = tagLabel(tag);
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("active");
+          renderCards();
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    function renderCategorySelect(reset) {
+      const sel = document.getElementById("category");
+      const current = sel.value;
+      if (reset) {
+        while (sel.options.length > 1) sel.remove(1);
+      }
+      const existing = new Set([...sel.options].map((o) => o.value));
+      DATA.categories.forEach((c) => {
+        if (!c || existing.has(c)) return;
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.textContent = c;
+        sel.appendChild(opt);
+        existing.add(c);
+      });
+      if (current && [...sel.options].some((o) => o.value === current)) sel.value = current;
+    }
+
+    function renderCards() {
+      const list = DATA.recipes.filter(matchesFilters);
+      const container = document.getElementById("cards");
+      container.innerHTML = "";
+
+      if (!list.length) {
+        container.innerHTML =
+          '<p class="cards-empty">No hay recetas con estos filtros. Prueba a ampliar la búsqueda o <button type="button" class="btn btn-primary btn-sm" id="emptyNew">crear una nueva</button>.</p>';
+        document.getElementById("emptyNew")?.addEventListener("click", () => openModal("new"));
+        return;
+      }
+
+      list.forEach((recipe) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "card" + (recipe.id === selectedId ? " active" : "");
+        btn.setAttribute("role", "listitem");
+
+        const thumb = document.createElement("div");
+        thumb.className = "card-thumb";
+        const imgFile = getSelectedImage(recipe);
+        if (imgFile) {
+          const img = document.createElement("img");
+          img.src = imageSrc(imgFile);
+          img.alt = "";
+          img.loading = "lazy";
+          thumb.appendChild(img);
+        } else {
+          const ph = document.createElement("span");
+          ph.className = "placeholder";
+          ph.textContent = "🍽";
+          thumb.appendChild(ph);
+        }
+
+        const body = document.createElement("div");
+        body.className = "card-body";
+        body.innerHTML = `<h3>${escapeHtml(recipe.name)}</h3><div class="card-meta">${escapeHtml(recipe.category)}</div>`;
+
+        btn.append(thumb, body);
+        btn.addEventListener("click", () => {
+          selectedId = recipe.id;
+          renderCards();
+          renderDetail(recipe);
+        });
+        container.appendChild(btn);
+      });
+
+      document.getElementById("resultCount").textContent =
+        list.length === 1 ? "1 receta encontrada" : `${list.length} recetas encontradas`;
+
+      if (selectedId && !list.some((r) => r.id === selectedId) && list.length) {
+        selectedId = list[0].id;
+        renderDetail(list[0]);
+        renderCards();
+      }
+    }
+
+    function renderDetail(recipe) {
+      const el = document.getElementById("detail");
+      const imgFile = getSelectedImage(recipe);
+      const imgs = recipeImages(recipe);
+      const url = extractUrl(recipe.web);
+
+      let photos = "";
+      if (imgs.length) {
+        photos = `<section class="section recipe-images"><h3>Fotos</h3><p class="images-hint">Clic en la miniatura para ampliar · ☆ foto de la tarjeta</p><div class="thumbs">`;
+        imgs.forEach((f) => {
+          const main = f === imgFile;
+          photos += `<div class="thumb-item">
+            <button type="button" class="thumb thumb-zoom${main ? " is-main" : ""}" data-file="${escapeHtml(f)}" title="Ampliar">
+              <img src="${escapeHtml(imageSrc(f))}" alt="" loading="lazy" />
+            </button>
+            <button type="button" class="thumb-star${main ? " is-main" : ""}" data-file="${escapeHtml(f)}" title="Usar en la tarjeta" aria-label="Usar en la tarjeta">☆</button>
+          </div>`;
+        });
+        photos += `</div></section>`;
+      }
+
+      const badges = recipe.tags.map((t) => `<span class="badge">${tagLabel(t)}</span>`).join("");
+
+      const ing = recipe.ingredients.length
+        ? `<ul>${recipe.ingredients.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`
+        : `<p class="note">No hay ingredientes listados en el documento.</p>`;
+
+      let prep;
+      if (recipe.preparation.length) {
+        const steps = recipe.preparation.map((p) => `<li>${escapeHtml(p)}</li>`).join("");
+        prep = `<ol>${steps}</ol>`;
+      } else if (url) {
+        prep = `<p class="note">La preparación está en el vídeo o enlace de referencia. Consulta la fuente enlazada.</p>`;
+      } else {
+        prep = `<p class="note">No hay pasos de preparación en el documento original.</p>`;
+      }
+
+      let web = "";
+      if (recipe.web) {
+        web = url
+          ? `<p class="web-link"><strong>Fuente:</strong> <a href="${url}" target="_blank" rel="noopener">${escapeHtml(recipe.web)}</a></p>`
+          : `<p class="web-link"><strong>Fuente:</strong> ${escapeHtml(recipe.web)}</p>`;
+      }
+
+      el.innerHTML = `
+        <div class="detail-inner">
+          <div class="detail-head">
+            <div>
+              <h2>${escapeHtml(recipe.name)}</h2>
+              <p style="margin:0.35rem 0 0;color:var(--muted)">${escapeHtml(recipe.category)}</p>
+              <div class="detail-actions">
+                <button type="button" class="btn btn-secondary btn-sm" id="btnEditRecipe">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm" id="btnDeleteRecipe">Eliminar</button>
+              </div>
+            </div>
+            <div class="badge-row">${badges}</div>
+          </div>
+          <div class="cols">
+            <section class="section">
+              <h3>Ingredientes</h3>
+              ${ing}
+            </section>
+            <section class="section">
+              <h3>Preparación</h3>
+              ${prep}
+            </section>
+          </div>
+          ${web}
+          ${photos}
+        </div>
+      `;
+
+      el.querySelectorAll(".thumb-zoom").forEach((btn) => {
+        btn.addEventListener("click", () => openLightbox(imgs, btn.dataset.file));
+      });
+
+      el.querySelectorAll(".thumb-star").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const file = btn.dataset.file;
+          setSelectedImage(recipe.id, file);
+          renderDetail(recipe);
+          renderCards();
+        });
+      });
+
+      document.getElementById("btnEditRecipe").addEventListener("click", () => openModal("edit", recipe));
+      document.getElementById("btnDeleteRecipe").addEventListener("click", () => deleteRecipe(recipe.id));
+    }
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function bindFilters() {
+      ["search", "category", "onlyPhoto", "onlyPrep"].forEach((id) => {
+        document.getElementById(id).addEventListener("input", renderCards);
+        document.getElementById(id).addEventListener("change", renderCards);
+      });
+      document.getElementById("resetFilters").addEventListener("click", () => {
+        document.getElementById("search").value = "";
+        document.getElementById("category").value = "";
+        document.getElementById("onlyPhoto").checked = false;
+        document.getElementById("onlyPrep").checked = false;
+        document.querySelectorAll(".tag-btn.active").forEach((b) => b.classList.remove("active"));
+        renderCards();
+      });
+    }
+
+    async function init() {
+      try {
+        DATA = await loadData();
+        document.getElementById("recipeTotal").textContent = DATA.recipes.length;
+        renderCategorySelect();
+        renderFormCategorySelect();
+        renderFormTags();
+        renderTagFilters();
+        bindFilters();
+        bindCrud();
+        bindLightbox();
+        renderCards();
+        if (DATA.recipes.length) {
+          selectedId = DATA.recipes[0].id;
+          renderDetail(DATA.recipes[0]);
+          renderCards();
+        }
+      } catch (e) {
+        document.getElementById("resultCount").textContent = "Error al cargar recetas";
+        document.getElementById("detail").innerHTML =
+          `<div class="detail-empty">No se pudieron cargar los datos. Arranca el servidor con <code>npm run dev</code> y abre <code>http://localhost:3000</code></div>`;
+        console.error(e);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
