@@ -73,6 +73,10 @@ export async function ensureDirs() {
   await seedPersistentData();
 }
 
+function mergeCategories(base, state) {
+  return [...new Set([...(base?.categories || []), ...(state?.categories || [])])];
+}
+
 export async function loadRecetario() {
   const base = await readJson(BASE_FILE, {
     title: "Recetas caseras",
@@ -89,7 +93,7 @@ export async function loadRecetario() {
     tagLabels: base.tagLabels || {},
     seasonLabels: base.seasonLabels || {},
     gallery: base.gallery || [],
-    categories: state?.categories?.length ? state.categories : base.categories || [],
+    categories: mergeCategories(base, state),
     recipes: state?.recipes?.length ? state.recipes : base.recipes || [],
     webLinks: state?.webLinks != null ? state.webLinks : base.webLinks || [],
     filterIngredients: state?.filterIngredients != null ? state.filterIngredients : base.filterIngredients || [],

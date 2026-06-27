@@ -719,6 +719,63 @@
       "id": "expresso-martini",
       "hasPreparation": true,
       "hasImage": true
+    },
+    {
+      "name": "Pastel de patata y pollo",
+      "category": "PLATOS PRINCIPALES",
+      "tags": [
+        "plato-principal"
+      ],
+      "seasons": [],
+      "images": [
+        "local:133e2346-c76a-4030-b416-020946bb6ce6"
+      ],
+      "ingredients": [
+        "Patata 500 g",
+        "Mantequilla 35 g",
+        "Leche 100 ml",
+        "Puerro 1",
+        "Champiñones 100 g",
+        "Contramuslos de pollo 400 g",
+        "Salsa de tomate 100 g",
+        "Salsa de soja oscura cucharada 1",
+        "Queso rallado 50 g",
+        "Sal",
+        "Pimienta negra molida",
+        "Nuez moscada molida",
+        "Aceite de oliva"
+      ],
+      "preparation": [
+        "Pelamos las patatas, las troceamos en daditos, y las cocemos 25 minutos en agua salada. Escurrimos y chafamos. Mezclamos en una cazuela la leche con la mantequilla, ponemos un poco de sal y de nuez moscada y calentamos hasta que la mantequilla se derrita. Vertemos la mezcla sobre las patatas majadas, y reservamos el puré.",
+        "Salpimentamos el pollo y lo cocinamos en una sartén bien caliente con un hilo de aceite de oliva 5 minutos por cada lado. Retiramos el pollo de la sartén, lo picamos y reservamos.",
+        "Salteamos el puerro picado finamente durante 5 minutos en la misma sartén de haber cocinado el pollo. Agregamos los champiñones cortados en daditos y cocinamos 2 minutos más antes de añadir el pollo, la salsa de tomate y la salsa de soja y dejar cocer a fuego lento 5 minutos.",
+        "Pintamos con aceite de oliva la base de una fuente refractaria y cubrimos con el puré de patatas. Repartimos el pollo por encima, cubrimos con el queso rallado, y horneamos el pastel 15 minutos a 200ºC.",
+        "Hay una version mas simple: Pure de patatas, mezclar con queso crema y un poco mantequilla o leche. Rellenar con pollo desmenuzado."
+      ],
+      "web": "https://www.directoalpaladar.com/recetas-de-carnes-y-aves/pastel-patata-pollo-receta-casera-ideal-para-noches-especiales",
+      "id": "pastel-de-patata-y-pollo",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Suplementos deportivos",
+      "category": "DEPORTE",
+      "tags": [],
+      "seasons": [],
+      "images": [],
+      "ingredients": [
+        "Dextrina",
+        "Caseina micelar",
+        "Creatinina"
+      ],
+      "preparation": [
+        "Dextrina: Hidratos de carbono preentreno",
+        "Caseina micelar: Postentreno. Mezclar con proteinas"
+      ],
+      "web": null,
+      "id": "suplementos-deportivos",
+      "hasPreparation": true,
+      "hasImage": false
     }
   ],
   "categories": [
@@ -728,6 +785,7 @@
     "COCKTELES",
     "CONSEJOS",
     "CREMAS",
+    "DEPORTE",
     "PICOTEOS",
     "PIZZAS",
     "PLATOS PRINCIPALES",
@@ -906,6 +964,10 @@
     "local:7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c": {
       "name": "Captura de pantalla 2026-06-27 a las 11.16.18.png",
       "file": "imported/7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c.png"
+    },
+    "local:133e2346-c76a-4030-b416-020946bb6ce6": {
+      "name": "Captura de pantalla 2026-06-27 a las 18.20.54.png",
+      "file": "imported/133e2346-c76a-4030-b416-020946bb6ce6.png"
     }
   }
 }
