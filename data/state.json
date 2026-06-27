@@ -540,22 +540,26 @@
     {
       "name": "COINTREAU & TONIC",
       "category": "BEBIDAS",
+      "tags": [
+        "bebida"
+      ],
+      "seasons": [],
+      "images": [
+        "local:9c925a08-1b23-47e6-94f5-77f7cff6c020"
+      ],
       "ingredients": [
-        "Cointreau 5 ml"
+        "Cointreau 5 ml",
+        "Tonica 20ml"
       ],
       "preparation": [
         "Tonica 20 ml",
         "Naranja o lima",
         "-Llenar un vaso con hielos y añadir 5 cl de Cointreau. -Añadir luego 20 cl de tónica previamente enfriada y decorar el vaso con un twist de lima o de naranja."
       ],
-      "images": [],
-      "web": null,
-      "tags": [
-        "bebida"
-      ],
+      "web": "https://www.youtube.com/shorts/1i7HPk-1MIw",
       "id": "cointreau-tonic",
       "hasPreparation": true,
-      "hasImage": false
+      "hasImage": true
     },
     {
       "name": "Batidos",
@@ -635,8 +639,10 @@
     },
     {
       "name": "Aperol spritz",
-      "category": "COCKTELES",
-      "tags": [],
+      "category": "COCTELES",
+      "tags": [
+        "bebida"
+      ],
       "seasons": [],
       "images": [
         "local:2d3450e7-71b7-4bd5-81ba-e84909435bad"
@@ -649,15 +655,17 @@
       "preparation": [
         "ADornar con rodaja naranja"
       ],
-      "web": null,
+      "web": "https://www.youtube.com/shorts/lIZYVTWZWTU",
       "id": "aperol-spritz",
       "hasPreparation": true,
       "hasImage": true
     },
     {
       "name": "Blue Curacao spritz",
-      "category": "COCKTELES",
-      "tags": [],
+      "category": "COCTELES",
+      "tags": [
+        "bebida"
+      ],
       "seasons": [],
       "images": [
         "local:29465044-4b26-4e98-a58b-5840f0ab5ab0"
@@ -672,15 +680,17 @@
       "preparation": [
         "Adornar con hierbabuena y una rodaja lima"
       ],
-      "web": null,
+      "web": "https://www.youtube.com/shorts/lIZYVTWZWTU",
       "id": "blue-curacao-spritz",
       "hasPreparation": true,
       "hasImage": true
     },
     {
       "name": "Limoncello spritz",
-      "category": "COCKTELES",
-      "tags": [],
+      "category": "COCTELES",
+      "tags": [
+        "bebida"
+      ],
       "seasons": [],
       "images": [
         "local:3aeb963e-f8d4-4ff2-9957-8740bc06315f"
@@ -693,15 +703,17 @@
       "preparation": [
         "rodaja limon y albahaca"
       ],
-      "web": null,
+      "web": "https://www.youtube.com/shorts/lIZYVTWZWTU",
       "id": "limoncello-spritz",
       "hasPreparation": true,
       "hasImage": true
     },
     {
-      "name": "Expresso martini",
-      "category": "COCKTELES",
-      "tags": [],
+      "name": "Expresso martini v.1",
+      "category": "COCTELES",
+      "tags": [
+        "bebida"
+      ],
       "seasons": [],
       "images": [
         "local:7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c"
@@ -776,13 +788,115 @@
       "id": "suplementos-deportivos",
       "hasPreparation": true,
       "hasImage": false
+    },
+    {
+      "name": "Expresso martini v.2",
+      "category": "COCTELES",
+      "tags": [
+        "bebida"
+      ],
+      "seasons": [],
+      "images": [],
+      "ingredients": [
+        "Vodka 60ml",
+        "Licor cafe/Tia Maria 30ml",
+        "Expresso 1",
+        "Bailyes 30ml"
+      ],
+      "preparation": [
+        "Mezclar todo. Ponerlo en una coctelera con hielo y agitar 12 segundos."
+      ],
+      "web": null,
+      "id": "expresso-martini-v-2",
+      "hasPreparation": true,
+      "hasImage": false
+    },
+    {
+      "name": "Tonica con cafe",
+      "category": "COCTELES",
+      "tags": [
+        "bebida"
+      ],
+      "seasons": [],
+      "images": [
+        "local:afe2b818-9b5d-4e18-8f04-c763c9246ebc"
+      ],
+      "ingredients": [
+        "Tonica 1 botellin",
+        "Expresso 1"
+      ],
+      "preparation": [
+        "En un vaso con hielo se vierte la tonica y luego el expresso.",
+        "Si se quiere aromatizar el vaso se quema un puñado de cafe en un plato y se pone le vaso encima.",
+        "Decorar con la piel de una naranja."
+      ],
+      "web": "https://www.youtube.com/shorts/HvROUiagBbY",
+      "id": "tonica-con-cafe",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Daiquiri de fresa",
+      "category": "COCTELES",
+      "tags": [
+        "bebida"
+      ],
+      "seasons": [],
+      "images": [
+        "local:5b76f341-34b9-49e1-a81b-163bdbff95a7"
+      ],
+      "ingredients": [
+        "Fresas 10",
+        "Limon medio zumo",
+        "Azucar",
+        "Ron 60ml"
+      ],
+      "preparation": [
+        "Se mezcla todo con hielo y se bate. Adornar con una fresa laminada y limon."
+      ],
+      "web": "https://www.youtube.com/shorts/4HETzP_XIw8",
+      "id": "daiquiri-de-fresa",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Limonada suiza",
+      "category": "BEBIDAS",
+      "tags": [
+        "bebida"
+      ],
+      "seasons": [
+        "verano"
+      ],
+      "images": [
+        "local:ce1dd7de-4e34-4884-88c8-75ea2e7af1af"
+      ],
+      "ingredients": [
+        "3 o 4 limones o limas.",
+        "400 ml de leche condensada (2 tazas).",
+        "80 ml de agua (4 tazas).",
+        "2 tazas de hielo."
+      ],
+      "preparation": [
+        "Se cortan los limones enteros y se trituran.",
+        "Se pone el agua",
+        "Se vuelven a triturar.",
+        "Se cuela con un colador.",
+        "Se añade la leche condensada.",
+        "Se añade el hielo.",
+        "Se vuelve a triturar."
+      ],
+      "web": "https://www.youtube.com/watch?v=6bRpkqpJ4AQ",
+      "id": "limonada-suiza",
+      "hasPreparation": true,
+      "hasImage": true
     }
   ],
   "categories": [
     "BEBIDAS",
     "BIZCOCHOS",
     "CALDOS",
-    "COCKTELES",
+    "COCTELES",
     "CONSEJOS",
     "CREMAS",
     "DEPORTE",
@@ -968,6 +1082,22 @@
     "local:133e2346-c76a-4030-b416-020946bb6ce6": {
       "name": "Captura de pantalla 2026-06-27 a las 18.20.54.png",
       "file": "imported/133e2346-c76a-4030-b416-020946bb6ce6.png"
+    },
+    "local:afe2b818-9b5d-4e18-8f04-c763c9246ebc": {
+      "name": "Captura de pantalla 2026-06-27 a las 22.37.24.png",
+      "file": "imported/afe2b818-9b5d-4e18-8f04-c763c9246ebc.png"
+    },
+    "local:5b76f341-34b9-49e1-a81b-163bdbff95a7": {
+      "name": "Captura de pantalla 2026-06-27 a las 22.40.42.png",
+      "file": "imported/5b76f341-34b9-49e1-a81b-163bdbff95a7.png"
+    },
+    "local:ce1dd7de-4e34-4884-88c8-75ea2e7af1af": {
+      "name": "Captura de pantalla 2026-06-27 a las 22.47.28.png",
+      "file": "imported/ce1dd7de-4e34-4884-88c8-75ea2e7af1af.png"
+    },
+    "local:9c925a08-1b23-47e6-94f5-77f7cff6c020": {
+      "name": "Captura de pantalla 2026-06-27 a las 22.52.22.png",
+      "file": "imported/9c925a08-1b23-47e6-94f5-77f7cff6c020.png"
     }
   }
 }
