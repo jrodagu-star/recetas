@@ -17,7 +17,12 @@ const ROOT = path.join(__dirname, "..");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "2mb" }));
+
+app.get("/health", (_req, res) => {
+  res.json({ ok: true });
+});
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -109,6 +114,7 @@ app.use((err, _req, res, _next) => {
 });
 
 await ensureDirs();
-app.listen(PORT, () => {
-  console.log(`Recetario: http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  const dataDir = process.env.RECETARIO_DATA_DIR || "data/ (local)";
+  console.log(`Recetario en puerto ${PORT} · datos: ${dataDir}`);
 });

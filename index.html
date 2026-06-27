@@ -254,6 +254,24 @@
       padding: 0 0.15rem;
     }
     .save-hint { font-size: 0.8rem; color: var(--success); }
+    .read-only-banner {
+      font-size: 0.78rem;
+      color: var(--accent);
+      padding: 0.2rem 0.55rem;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    body.read-only .header-actions,
+    body.read-only #btnAddWebLink,
+    body.read-only #btnEditIngredientFilters,
+    body.read-only #ingredientFiltersEditActions,
+    body.read-only .detail-actions,
+    body.read-only .thumb-star,
+    body.read-only #saveHint,
+    body.read-only .web-link-row-actions,
+    body.read-only .recipe-web-editor,
+    body.read-only #btnRecipeWebLink { display: none !important; }
     .cards {
       display: flex;
       flex-wrap: nowrap;
@@ -533,6 +551,16 @@
       margin-bottom: 0.35rem;
     }
     .form-hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+    .repo-sync-notice {
+      margin: 0 0 1rem;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: #92400e;
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: var(--radius-sm);
+    }
     .tag-checks {
       display: flex;
       flex-wrap: wrap;
@@ -763,6 +791,7 @@
       <div class="main-col">
         <div class="results-bar">
           <span id="resultCount">Cargando…</span>
+          <span id="readOnlyBanner" class="read-only-banner" hidden>Consulta · GitHub</span>
           <span id="saveHint" class="save-hint" hidden>Guardado</span>
         </div>
 
@@ -787,6 +816,9 @@
         <button type="button" class="btn btn-ghost btn-sm" id="modalClose" aria-label="Cerrar">✕</button>
       </div>
       <form id="recipeForm" class="modal-body">
+        <p class="repo-sync-notice" role="note">
+          Los cambios solo se guardarán de forma permanente si se realizan desde <strong>Cursor en el Mac</strong> y se suben los cambios al repositorio de GitHub.
+        </p>
         <div class="form-row">
           <label for="formName">Nombre *</label>
           <input id="formName" type="text" required placeholder="Ej. Pollo al curry" autocomplete="off" />
@@ -919,12 +951,78 @@
     let imageChoices = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     let importedImages = {};
     let useBackend = false;
+    let readOnly = false;
     let editingId = null;
     let toastTimer = null;
     let lightboxFiles = [];
     let lightboxIndex = 0;
     let editingWebLinkId = null;
     let ingredientFiltersEditing = false;
+
+    function isStaticHost() {
+      const host = location.hostname.toLowerCase();
+      return host === "github.io" || host.endsWith(".github.io");
+    }
+
+    function mergeRecetarioFiles(base, state) {
+      return {
+        title: base.title,
+        source: base.source,
+        tagLabels: base.tagLabels || {},
+        seasonLabels: base.seasonLabels || {},
+        gallery: base.gallery || [],
+        categories: state?.categories?.length ? state.categories : base.categories || [],
+        recipes: state?.recipes?.length ? state.recipes : base.recipes || [],
+        webLinks: state?.webLinks != null ? state.webLinks : base.webLinks || [],
+        filterIngredients:
+          state?.filterIngredients != null ? state.filterIngredients : base.filterIngredients || [],
+        filterIngredientsCustomized: Boolean(state?.filterIngredientsCustomized),
+        imageChoices: state?.imageChoices || {},
+        importedImages: state?.importedImages || {},
+      };
+    }
+
+    async function loadStaticRecetario() {
+      readOnly = true;
+      useBackend = false;
+      const [baseRes, stateRes] = await Promise.all([
+        fetch("data/recipes.json"),
+        fetch("data/state.json"),
+      ]);
+      if (!baseRes.ok) throw new Error("No se pudo cargar data/recipes.json");
+      const base = await baseRes.json();
+      let state = null;
+      if (stateRes.ok) {
+        try {
+          state = await stateRes.json();
+        } catch {
+          /* state opcional */
+        }
+      }
+      const data = mergeRecetarioFiles(base, state);
+      imageChoices = data.imageChoices || {};
+      applyImportedImagesFromPayload(data.importedImages);
+      delete data.imageChoices;
+      delete data.importedImages;
+      syncCategoriesWithRecipes(data);
+      updateSaveHint();
+      return data;
+    }
+
+    function applyReadOnlyUI() {
+      if (!readOnly) return;
+      document.body.classList.add("read-only");
+      document.getElementById("readOnlyBanner").hidden = false;
+      const brandP = document.querySelector(".brand p");
+      if (brandP) {
+        brandP.textContent =
+          "Consulta tus recetas desde cualquier sitio. Para editar, usa Cursor en el Mac y sube los cambios al repositorio.";
+      }
+      const webHint = document.querySelector("#webLinksSection .filter-hint");
+      if (webHint) webHint.textContent = "Clic en el nombre para abrir el sitio.";
+      const ingHint = document.querySelector("#filterIngredientsTitle")?.closest(".filter-group")?.querySelector(".filter-hint");
+      if (ingHint) ingHint.textContent = "Pulsa un ingrediente para filtrar recetas.";
+    }
 
     async function loadBaseData() {
       const embedded = document.getElementById("recipes-data");
@@ -947,6 +1045,11 @@
     function updateSaveHint() {
       const hint = document.getElementById("saveHint");
       const foot = document.getElementById("saveFooterNote");
+      if (readOnly) {
+        hint.hidden = true;
+        foot.textContent = "Modo consulta · Datos publicados en GitHub (solo lectura)";
+        return;
+      }
       hint.hidden = false;
       if (useBackend) {
         hint.textContent = "Guardado en el servidor";
@@ -1151,6 +1254,10 @@
     }
 
     async function loadData() {
+      if (isStaticHost()) {
+        return loadStaticRecetario();
+      }
+
       try {
         const res = await fetch("/api/recetario");
         if (res.ok) {
@@ -1252,6 +1359,7 @@
     }
 
     async function persistWebLinks() {
+      if (readOnly) return false;
       if (!DATA) return false;
       syncWebLinksInData(DATA);
       if (useBackend) {
@@ -1275,6 +1383,7 @@
     }
 
     async function persistState() {
+      if (readOnly) return false;
       if (!DATA) return false;
       document.getElementById("recipeTotal").textContent = DATA.recipes.length;
       updateSaveHint();
@@ -1447,12 +1556,16 @@
       });
     }
 
-    function showToast(message, isError) {
+    const REPO_SYNC_REMINDER =
+      " Recuerda: solo se conservan en GitHub si editas desde Cursor en el Mac y subes los cambios al repositorio.";
+
+    function showToast(message, isError, durationMs) {
       const el = document.getElementById("toast");
       el.textContent = message;
       el.className = "toast show" + (isError ? " error" : "");
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
+      const ms = durationMs ?? (isError ? 3500 : 2800);
+      toastTimer = setTimeout(() => el.classList.remove("show"), ms);
     }
 
     function openModal(mode, recipe) {
@@ -1661,11 +1774,11 @@
           DATA.recipes[idx] = recipe;
         }
         selectedId = recipe.id;
-        showToast("Receta actualizada");
+        showToast("Receta actualizada." + REPO_SYNC_REMINDER, false, 5200);
       } else {
         DATA.recipes.push(recipe);
         selectedId = recipe.id;
-        showToast("Receta añadida");
+        showToast("Receta añadida." + REPO_SYNC_REMINDER, false, 5200);
       }
 
       persistState();
@@ -1767,8 +1880,9 @@
       container.innerHTML = "";
       const links = DATA?.webLinks || [];
       if (!links.length) {
-        container.innerHTML =
-          '<p class="web-links-empty">Aún no hay enlaces. Pulsa <strong>+ Añadir</strong> para guardar un sitio de recetas.</p>';
+        container.innerHTML = readOnly
+          ? '<p class="web-links-empty">No hay enlaces en el repositorio.</p>'
+          : '<p class="web-links-empty">Aún no hay enlaces. Pulsa <strong>+ Añadir</strong> para guardar un sitio de recetas.</p>';
         return;
       }
       links.forEach((link) => {
@@ -2244,9 +2358,12 @@
       container.innerHTML = "";
 
       if (!list.length) {
-        container.innerHTML =
-          '<p class="cards-empty">No hay recetas con estos filtros. Prueba a ampliar la búsqueda o <button type="button" class="btn btn-primary btn-sm" id="emptyNew">crear una nueva</button>.</p>';
-        document.getElementById("emptyNew")?.addEventListener("click", () => openModal("new"));
+        container.innerHTML = readOnly
+          ? '<p class="cards-empty">No hay recetas con estos filtros. Prueba a ampliar la búsqueda.</p>'
+          : '<p class="cards-empty">No hay recetas con estos filtros. Prueba a ampliar la búsqueda o <button type="button" class="btn btn-primary btn-sm" id="emptyNew">crear una nueva</button>.</p>';
+        if (!readOnly) {
+          document.getElementById("emptyNew")?.addEventListener("click", () => openModal("new"));
+        }
         return;
       }
 
@@ -2303,7 +2420,9 @@
 
       let photos = "";
       if (imgs.length) {
-        photos = `<section class="section recipe-images"><h3>Fotos</h3><p class="images-hint">Clic en la miniatura para ampliar · ☆ foto de la tarjeta</p><div class="thumbs">`;
+        photos = `<section class="section recipe-images"><h3>Fotos</h3>${
+          readOnly ? "" : '<p class="images-hint">Clic en la miniatura para ampliar · ☆ foto de la tarjeta</p>'
+        }<div class="thumbs">`;
         imgs.forEach((f) => {
           const main = f === imgFile;
           photos += `<div class="thumb-item">
@@ -2438,6 +2557,7 @@
     async function init() {
       try {
         DATA = await loadData();
+        applyReadOnlyUI();
         document.getElementById("recipeTotal").textContent = DATA.recipes.length;
         renderCategorySelect();
         renderFormCategorySelect();
@@ -2460,8 +2580,11 @@
         }
       } catch (e) {
         document.getElementById("resultCount").textContent = "Error al cargar recetas";
+        const help = readOnly || isStaticHost()
+          ? "No se pudieron cargar los datos del repositorio. Comprueba que <code>data/recipes.json</code> y <code>data/state.json</code> están en GitHub."
+          : 'No se pudieron cargar los datos. Arranca el servidor con <code>npm run dev</code> y abre <code>http://localhost:3000</code>';
         document.getElementById("detail").innerHTML =
-          `<div class="detail-empty">No se pudieron cargar los datos. Arranca el servidor con <code>npm run dev</code> y abre <code>http://localhost:3000</code></div>`;
+          `<div class="detail-empty">${help}</div>`;
         console.error(e);
       }
     }

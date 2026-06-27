@@ -4,9 +4,20 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
+const PERSISTENT_DIR = process.env.RECETARIO_DATA_DIR
+  ? path.resolve(process.env.RECETARIO_DATA_DIR)
+  : null;
+
 const BASE_FILE = path.join(ROOT, "data", "recipes.json");
-const STATE_FILE = path.join(ROOT, "data", "state.json");
-const IMPORTED_DIR = path.join(ROOT, "images", "imported");
+const STATE_FILE = PERSISTENT_DIR
+  ? path.join(PERSISTENT_DIR, "state.json")
+  : path.join(ROOT, "data", "state.json");
+const IMPORTED_DIR = PERSISTENT_DIR
+  ? path.join(PERSISTENT_DIR, "imported")
+  : path.join(ROOT, "images", "imported");
+
+const BUNDLED_STATE = path.join(ROOT, "data", "state.json");
+const BUNDLED_IMPORTED = path.join(ROOT, "images", "imported");
 
 async function readJson(file, fallback) {
   try {
@@ -22,8 +33,44 @@ async function writeJson(file, data) {
   await fs.writeFile(file, JSON.stringify(data, null, 2) + "\n", "utf8");
 }
 
+async function fileExists(file) {
+  try {
+    await fs.access(file);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function copyDirIfMissing(srcDir, destDir) {
+  if (!(await fileExists(srcDir))) return;
+  await fs.mkdir(destDir, { recursive: true });
+  const entries = await fs.readdir(srcDir, { withFileTypes: true });
+  for (const entry of entries) {
+    const from = path.join(srcDir, entry.name);
+    const to = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      await copyDirIfMissing(from, to);
+      continue;
+    }
+    if (!(await fileExists(to))) {
+      await fs.copyFile(from, to);
+    }
+  }
+}
+
+async function seedPersistentData() {
+  if (!PERSISTENT_DIR) return;
+  await fs.mkdir(PERSISTENT_DIR, { recursive: true });
+  if (!(await fileExists(STATE_FILE)) && (await fileExists(BUNDLED_STATE))) {
+    await fs.copyFile(BUNDLED_STATE, STATE_FILE);
+  }
+  await copyDirIfMissing(BUNDLED_IMPORTED, IMPORTED_DIR);
+}
+
 export async function ensureDirs() {
   await fs.mkdir(IMPORTED_DIR, { recursive: true });
+  await seedPersistentData();
 }
 
 export async function loadRecetario() {

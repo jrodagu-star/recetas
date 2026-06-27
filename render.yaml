@@ -1,0 +1,18 @@
+# Blueprint de Render: https://render.com/docs/blueprint-spec
+# Tras conectar el repo, despliega con disco persistente para state.json e imágenes.
+services:
+  - type: web
+    name: recetario
+    runtime: docker
+    region: frankfurt
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RECETARIO_DATA_DIR
+        value: /var/data
+    disk:
+      name: recetario-data
+      mountPath: /var/data
+      sizeGB: 1
