@@ -68,6 +68,16 @@
     {
       "name": "HUMMUS",
       "category": "PLATOS PRINCIPALES",
+      "tags": [
+        "plato-principal",
+        "vegetariano"
+      ],
+      "seasons": [
+        "verano"
+      ],
+      "images": [
+        "image2.jpeg"
+      ],
       "ingredients": [
         "Garbanzos cocidos 400 g",
         "Aceite de oliva virgen extra 70 g",
@@ -84,14 +94,7 @@
         "Trituramos hasta obtener una masa semi homogénea antes de incorporar el aceite de oliva virgen extra. Continuamos triturando unos minutos o hasta obtener una mezcla cremosa. Podemos aportar más cremosidad al hummus de garbanzos si añadimos un poco de yogur natural. Muchos restaurantes libaneses lo utilizan y queda estupendo, pero esto es completamente opcional.",
         "En el momento de servir rociamos con un chorrito de aceite de oliva virgen extra, semillas variadas y pimentón dulce. Otros toppings que podemos añadir son aceitunas o perejil picado. Al gusto. Servir con panecillos o palitos de zanahoria."
       ],
-      "images": [
-        "image2.jpeg"
-      ],
       "web": "WEB: directo al paladar",
-      "tags": [
-        "plato-principal",
-        "vegetariano"
-      ],
       "id": "hummus",
       "hasPreparation": true,
       "hasImage": true
@@ -598,15 +601,135 @@
       "id": "batidos",
       "hasPreparation": true,
       "hasImage": false
+    },
+    {
+      "name": "Pizza calabacin",
+      "category": "PIZZAS",
+      "tags": [
+        "saludable"
+      ],
+      "seasons": [],
+      "images": [
+        "local:df758541-4500-408e-8487-035ed863dadf"
+      ],
+      "ingredients": [
+        "Calabacín de tamaño medio 1",
+        "Harina de garbanzos.   75 g",
+        "Orégano seco          5 g",
+        "Sal y pimienta al gusto",
+        "Queso Mozzarella a gusto",
+        "Salsa de tomate a gusto",
+        "Albahaca a gusto"
+      ],
+      "preparation": [
+        "Encender el horno a 180 ªC.",
+        "Rallar el calabacín y dejar reposar por 5 minutos. Luego quitar el agua de la verdura presionando con las manos, con un colador, con un paño o una bolsa de tela de leches vegetales.",
+        "En un cuenco, mezclar la verdura excedente con la harina de garbanzos, el orégano, la sal y la pimienta e integrar hasta tener una masa con consistencia. Eso sí, no debe quedar excesivamente húmeda. La necesidad y cantidad de harina, dependerá principalmente del agua que se escurra del calabacín.",
+        "Luego formar la base de la pizza, en una fuente con papel de manteca o placa de silicona. Hornear 10 minutos en principio, retirar del horno y cubrir con la salsa de tomate, el queso mozzarella y volver a hornear por 10 a 15 minutos más hasta que el queso se derrita.",
+        "Retirar del horno y servir para disfrutar con albahaca fresca o seca."
+      ],
+      "web": "https://www.directoalpaladar.com/recetas-vegetarianas/pizza-masa-calabacin-receta-facil-sana-para-darse-gusto-comer-vegetales",
+      "id": "pizza-calabacin",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Aperol spritz",
+      "category": "COCKTELES",
+      "tags": [],
+      "seasons": [],
+      "images": [
+        "local:2d3450e7-71b7-4bd5-81ba-e84909435bad"
+      ],
+      "ingredients": [
+        "3x prosecco / cava brut nature",
+        "2x aperol spritz",
+        "1x soda"
+      ],
+      "preparation": [
+        "ADornar con rodaja naranja"
+      ],
+      "web": null,
+      "id": "aperol-spritz",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Blue Curacao spritz",
+      "category": "COCKTELES",
+      "tags": [],
+      "seasons": [],
+      "images": [
+        "local:29465044-4b26-4e98-a58b-5840f0ab5ab0"
+      ],
+      "ingredients": [
+        "4x prosecco / cava brut nature",
+        "1x blue curacao",
+        "2x ginebra",
+        "Zumo media lima",
+        "Soda al final"
+      ],
+      "preparation": [
+        "Adornar con hierbabuena y una rodaja lima"
+      ],
+      "web": null,
+      "id": "blue-curacao-spritz",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Limoncello spritz",
+      "category": "COCKTELES",
+      "tags": [],
+      "seasons": [],
+      "images": [
+        "local:3aeb963e-f8d4-4ff2-9957-8740bc06315f"
+      ],
+      "ingredients": [
+        "3x prosecco",
+        "2x limoncello",
+        "soda al final"
+      ],
+      "preparation": [
+        "rodaja limon y albahaca"
+      ],
+      "web": null,
+      "id": "limoncello-spritz",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Expresso martini",
+      "category": "COCKTELES",
+      "tags": [],
+      "seasons": [],
+      "images": [
+        "local:7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c"
+      ],
+      "ingredients": [
+        "60 ml Vodka",
+        "15 ml licor cafe",
+        "30 ml cafe expresso",
+        "7,5 ml sirope"
+      ],
+      "preparation": [
+        "poner todo junto, agregar hielo y agitar durante 10 segundos. dejar reposar y añadir unos granos de cafe."
+      ],
+      "web": null,
+      "id": "expresso-martini",
+      "hasPreparation": true,
+      "hasImage": true
     }
   ],
   "categories": [
     "BEBIDAS",
     "BIZCOCHOS",
     "CALDOS",
+    "COCKTELES",
     "CONSEJOS",
     "CREMAS",
     "PICOTEOS",
+    "PIZZAS",
     "PLATOS PRINCIPALES",
     "SALSAS"
   ],
@@ -763,5 +886,26 @@
   ],
   "filterIngredientsCustomized": true,
   "imageChoices": {},
-  "importedImages": {}
+  "importedImages": {
+    "local:df758541-4500-408e-8487-035ed863dadf": {
+      "name": "pizza.jpeg",
+      "file": "imported/df758541-4500-408e-8487-035ed863dadf.jpeg"
+    },
+    "local:2d3450e7-71b7-4bd5-81ba-e84909435bad": {
+      "name": "Captura de pantalla 2026-06-27 a las 11.08.25.png",
+      "file": "imported/2d3450e7-71b7-4bd5-81ba-e84909435bad.png"
+    },
+    "local:29465044-4b26-4e98-a58b-5840f0ab5ab0": {
+      "name": "Captura de pantalla 2026-06-27 a las 11.11.15.png",
+      "file": "imported/29465044-4b26-4e98-a58b-5840f0ab5ab0.png"
+    },
+    "local:3aeb963e-f8d4-4ff2-9957-8740bc06315f": {
+      "name": "Captura de pantalla 2026-06-27 a las 11.14.21.png",
+      "file": "imported/3aeb963e-f8d4-4ff2-9957-8740bc06315f.png"
+    },
+    "local:7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c": {
+      "name": "Captura de pantalla 2026-06-27 a las 11.16.18.png",
+      "file": "imported/7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c.png"
+    }
+  }
 }
