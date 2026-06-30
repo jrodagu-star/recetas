@@ -890,6 +890,63 @@
       "id": "limonada-suiza",
       "hasPreparation": true,
       "hasImage": true
+    },
+    {
+      "name": "Salsa Pesto",
+      "category": "SALSAS",
+      "tags": [],
+      "seasons": [],
+      "images": [
+        "local:5a09b1b6-1a44-42a0-ad25-d919ec2a241c"
+      ],
+      "ingredients": [
+        "Albahaca fresca 100g",
+        "Queso parmesano 200g",
+        "Peñones 75g",
+        "Diente ajo 2",
+        "Aceite oliva 160ml",
+        "Sal"
+      ],
+      "preparation": [
+        "Separamos las hojas de albahaca del tallo (no lo utilizamos porque amarga y estropea el resultado), las lavamos y secamos a conciencia. Para ello, las extendemos sobre una hoja de papel absorbente de cocina, colocamos otra hoja encima y presionamos ligeramente con la palma de la mano, con cuidado de no romper ninguna hoja.",
+        "Eliminar toda el agua es un paso imporantante, así que hay que tomárselo con calma. La albahaca es una planta muy delicada que tiene a oxidarse con facilidad. Cualquier gota de agua o cualquier desgarro de las hojas producirá un cambio en el color de nuestro pesto, volviéndolo oscuro en lugar de quedar verde brillante y claro.",
+        "Mientras las hojas de albahaca se secan, pelamos los dientes de ajo, los cortamos en dos, a lo largo, y retiramos el gérmen. Tostamos los piñones en una sartén, sin aceite. Colocamos todos los ingredientes en el vaso de un robot de cocina, junto con la mitad del aceite y una pizca de sal, y trituramos.",
+        "Cuando hayamos obtenido una papilla y no se aprecien trozos de piñones ni de albahaca, dejamos de triturar para añadir el resto del aceite. Trituramos de nuevo, sólo para integrar el aceite, y ya tenemos nuestra salsa de pesto de albahaca listo para utilizar."
+      ],
+      "web": "https://www.directoalpaladar.com/recetas-de-salsas-y-guarniciones/pesto-de-albahaca-receta-tradicional-italiana",
+      "id": "salsa-pesto",
+      "hasPreparation": true,
+      "hasImage": true
+    },
+    {
+      "name": "Pan de avena y chia",
+      "category": "Panes",
+      "tags": [],
+      "seasons": [],
+      "images": [
+        "local:d3c6356c-9336-454b-b022-d06670605528"
+      ],
+      "ingredients": [
+        "2 Tazas avena instantánea",
+        "1/2 taza chía",
+        "2 huevos",
+        "1 pizca sal",
+        "4 cucharadas aceite (oliva, girasol, etc)",
+        "1 taza agua o leche (la que uses)",
+        "1 cucharada polvo de hornear",
+        "2 cucharadas semillas (opcional)"
+      ],
+      "preparation": [
+        "En un bol poner los huevos, aceite y agua o leche. Mezclar hasta que se desarmen los huevos.",
+        "Preparar por otro lado los secos, la avena con el polvo de hornear, sal, chía",
+        "Unir todo y mezclar hasta que quede una preparación homogénea.",
+        "Mientras preparamos el horno a 180°. En un molde mediano colocamos rocío vegetal para agregar la mezcla. Llevamos al horno 35 a 40 minutos, o cuando veas que está doradito arriba",
+        "Una vez cocinado podés decorarlo con semillas o dejarlo así"
+      ],
+      "web": "https://cookpad.com/ar/recetas/25699267?ref=search&search_term=avena+instantanea",
+      "id": "pan-de-avena-y-chia",
+      "hasPreparation": true,
+      "hasImage": true
     }
   ],
   "categories": [
@@ -900,6 +957,7 @@
     "CONSEJOS",
     "CREMAS",
     "DEPORTE",
+    "Panes",
     "PICOTEOS",
     "PIZZAS",
     "PLATOS PRINCIPALES",
@@ -1098,6 +1156,14 @@
     "local:9c925a08-1b23-47e6-94f5-77f7cff6c020": {
       "name": "Captura de pantalla 2026-06-27 a las 22.52.22.png",
       "file": "imported/9c925a08-1b23-47e6-94f5-77f7cff6c020.png"
+    },
+    "local:5a09b1b6-1a44-42a0-ad25-d919ec2a241c": {
+      "name": "Captura de pantalla 2026-06-30 a las 11.45.08.png",
+      "file": "imported/5a09b1b6-1a44-42a0-ad25-d919ec2a241c.png"
+    },
+    "local:d3c6356c-9336-454b-b022-d06670605528": {
+      "name": "Captura de pantalla 2026-06-30 a las 11.51.08.png",
+      "file": "imported/d3c6356c-9336-454b-b022-d06670605528.png"
     }
   }
 }
