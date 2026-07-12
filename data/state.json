@@ -353,29 +353,36 @@
     {
       "name": "VICHYSOISSEE ARGUIÑANO",
       "category": "CREMAS",
-      "ingredients": [
-        "Medio pollo",
-        "Rama perejil",
-        "Puerro 4 con la parte blanca",
-        "Patata",
-        "Cebolleta 1",
-        "Zanahoria 1",
-        "Sal",
-        "Mantequilla",
-        "Nata liquida",
-        "Cebollino"
-      ],
-      "preparation": [],
-      "images": [],
-      "web": null,
       "tags": [
         "crema",
-        "pollo",
-        "vegetariano"
+        "vegetariano",
+        "pollo"
       ],
+      "seasons": [],
+      "images": [
+        "local:aae30da5-d4e1-4244-85db-6b55622a6b52",
+        "local:71e37313-9674-498b-9bba-c9c5f48926aa"
+      ],
+      "ingredients": [
+        "5 puerros",
+        "2 patatas",
+        "1 cebolleta",
+        "una nuez de mantequilla",
+        "150 mililitros de nata líquida",
+        "aceite de oliva virgen extra",
+        "sal",
+        "cebollino",
+        "perifollo"
+      ],
+      "preparation": [
+        "1. Limpia la cebolleta y los puerros. Pica todo y pon a pochar en una cazuela con la mantequilla y un chorrito de aceite. Añade las patatas peladas y cascadas y rehoga a fuego suave. Sazona. Es importante que no cojan color. Vierte el caldo de ave y deja cocer unos 12-15 minutos.",
+        "2. Tritura la sopa con la batidora eléctrica y cuela.",
+        "3. Añade la nata líquida mientras mezclas bien con una cuchara. Deja atemperar y mete en el frigorífico para que se enfríe bien."
+      ],
+      "web": "https://www.hogarmania.com/cocina/recetas/sopas-cremas/vichyssoise-15196.html",
       "id": "vichysoissee-arguinano",
-      "hasPreparation": false,
-      "hasImage": false
+      "hasPreparation": true,
+      "hasImage": true
     },
     {
       "name": "CALDO DE VERDURAS",
@@ -709,30 +716,6 @@
       "hasImage": true
     },
     {
-      "name": "Expresso martini v.1",
-      "category": "COCTELES",
-      "tags": [
-        "bebida"
-      ],
-      "seasons": [],
-      "images": [
-        "local:7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c"
-      ],
-      "ingredients": [
-        "60 ml Vodka",
-        "15 ml licor cafe",
-        "30 ml cafe expresso",
-        "7,5 ml sirope"
-      ],
-      "preparation": [
-        "poner todo junto, agregar hielo y agitar durante 10 segundos. dejar reposar y añadir unos granos de cafe."
-      ],
-      "web": null,
-      "id": "expresso-martini",
-      "hasPreparation": true,
-      "hasImage": true
-    },
-    {
       "name": "Pastel de patata y pollo",
       "category": "PLATOS PRINCIPALES",
       "tags": [
@@ -790,26 +773,35 @@
       "hasImage": false
     },
     {
-      "name": "Expresso martini v.2",
+      "name": "Espresso Martini",
       "category": "COCTELES",
       "tags": [
         "bebida"
       ],
       "seasons": [],
-      "images": [],
+      "images": [
+        "local:7c96c726-5d25-4c92-9c6d-ffd3e66f9a0c"
+      ],
       "ingredients": [
-        "Vodka 60ml",
-        "Licor cafe/Tia Maria 30ml",
-        "Expresso 1",
-        "Bailyes 30ml"
+        "Vodka 60 ml / 30 ml / 15 ml",
+        "  Vassa (vodka sin OH)",
+        "  Lyre's Dark Cane (ron sin OH)",
+        "  Seedlip Spice 94 (ginebra sin OH)",
+        "Licor de café / Tía María / Kahlúa 30 ml",
+        "Espresso 30 ml",
+        "Baileys 30 ml",
+        "  O 10 ml de azúcar líquido"
       ],
       "preparation": [
-        "Mezclar todo. Ponerlo en una coctelera con hielo y agitar 12 segundos."
+        "Poner hielo en la copa mientras se prepara el cóctel.",
+        "Mezclar todos los ingredientes en la coctelera con hielo.",
+        "Agitar de forma intensa pero breve, para que no se forme agua.",
+        "Colar en la copa y servir."
       ],
       "web": null,
       "id": "expresso-martini-v-2",
       "hasPreparation": true,
-      "hasImage": false
+      "hasImage": true
     },
     {
       "name": "Tonica con cafe",
@@ -947,6 +939,33 @@
       "id": "pan-de-avena-y-chia",
       "hasPreparation": true,
       "hasImage": true
+    },
+    {
+      "name": "Caldo de pollo",
+      "category": "CALDOS",
+      "tags": [
+        "caldo"
+      ],
+      "seasons": [],
+      "images": [
+        "local:81645bd7-5b1d-4ba4-b944-c8eaa47e2d34"
+      ],
+      "ingredients": [
+        "200 gramos de huesos de pollo",
+        "1 zanahoria",
+        "1/2 cebolla",
+        "1 rama de apio",
+        "pimienta negra",
+        "2 hojas de laurel"
+      ],
+      "preparation": [
+        "Pon agua a hervir y añade los huesos de pollo, la cebolla pelada (sin cortar), el apio, la zanahoria pelada (entera), pimienta negra y el laurel. Cuece mínimo 30 minutos.",
+        "Retira la carne y las verduras. Para el caldo por un colador para quitar los restos y trazas de éstos."
+      ],
+      "web": "https://www.cocinatis.com/receta/caldo-de-pollo.html",
+      "id": "caldo-de-pollo",
+      "hasPreparation": true,
+      "hasImage": true
     }
   ],
   "categories": [
@@ -978,6 +997,11 @@
       "id": "cookpad",
       "title": "Cookpad",
       "url": "https://cookpad.com/es"
+    },
+    {
+      "id": "hogarmania",
+      "title": "Hogarmania",
+      "url": "https://www.hogarmania.com/"
     }
   ],
   "filterIngredients": [
@@ -1164,6 +1188,18 @@
     "local:d3c6356c-9336-454b-b022-d06670605528": {
       "name": "Captura de pantalla 2026-06-30 a las 11.51.08.png",
       "file": "imported/d3c6356c-9336-454b-b022-d06670605528.png"
+    },
+    "local:81645bd7-5b1d-4ba4-b944-c8eaa47e2d34": {
+      "name": "Captura de pantalla 2026-07-12 a las 16.54.25.png",
+      "file": "imported/81645bd7-5b1d-4ba4-b944-c8eaa47e2d34.png"
+    },
+    "local:aae30da5-d4e1-4244-85db-6b55622a6b52": {
+      "name": "Captura de pantalla 2026-07-12 a las 16.59.13.png",
+      "file": "imported/aae30da5-d4e1-4244-85db-6b55622a6b52.png"
+    },
+    "local:71e37313-9674-498b-9bba-c9c5f48926aa": {
+      "name": "Captura de pantalla 2026-07-12 a las 16.59.44.png",
+      "file": "imported/71e37313-9674-498b-9bba-c9c5f48926aa.png"
     }
   }
 }

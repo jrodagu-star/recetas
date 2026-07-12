@@ -454,6 +454,12 @@
       border-bottom: 2px solid var(--accent-soft);
     }
     .section ul, .section ol { margin: 0; padding-left: 1.2rem; }
+    .section ul li.ingredient-sub {
+      margin-left: 0.85rem;
+      color: var(--muted);
+      font-size: 0.92em;
+      list-style-type: circle;
+    }
     .section li { margin-bottom: 0.45rem; line-height: 1.45; }
     .section ol li { padding-left: 0.15rem; }
     .note {
@@ -2442,7 +2448,11 @@
       ].join("");
 
       const ing = recipe.ingredients.length
-        ? `<ul>${recipe.ingredients.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`
+        ? `<ul>${recipe.ingredients.map((i) => {
+            const sub = /^\s{2,}/.test(i);
+            const text = sub ? i.trimStart() : i;
+            return `<li${sub ? ' class="ingredient-sub"' : ""}>${escapeHtml(text)}</li>`;
+          }).join("")}</ul>`
         : `<p class="note">No hay ingredientes listados en el documento.</p>`;
 
       let prep;
