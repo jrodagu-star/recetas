@@ -966,6 +966,38 @@
       "id": "caldo-de-pollo",
       "hasPreparation": true,
       "hasImage": true
+    },
+    {
+      "name": "Avena Trasnochada \"Brownie\" (Desayuno)",
+      "category": "DEPORTE",
+      "tags": [
+        "saludable"
+      ],
+      "seasons": [],
+      "images": [
+        "local:1c93a43b-390a-43e4-974c-cf21eceafec9"
+      ],
+      "ingredients": [
+        "Avena 50 g",
+        "Cacahuete en polvo desgrasado 15 g",
+        "Cacao puro desgrasado 5 g",
+        "Proteína en polvo (sabor brownie) 15-20 g",
+        "Yogur griego ligero 150 g",
+        "Agua 100 g",
+        "Nueces 10 g",
+        "Plátano 1"
+      ],
+      "preparation": [
+        "En un recipiente, mezcla la avena, el cacahuete en polvo, el cacao y la proteína en polvo.",
+        "Añade el yogur griego ligero y los 100 ml de agua. Remueve bien hasta obtener una textura integrada (quedará densa al principio).",
+        "Tápalo y déjalo reposar en la nevera un mínimo de 20 a 30 minutos (o idealmente toda la noche) para que la avena se hidrate y quede con textura de mousse.",
+        "Al momento de consumir, añade por encima las nueces troceadas y el plátano cortado en rodajas.",
+        "Información nutricional: 560-590 kcal | Prot: 44-50 g | HC: 63-68 g | Grasas: 12-15 g | Fibra: 11-13 g."
+      ],
+      "web": "https://www.youtube.com/watch?v=i-hUA9mBpeY",
+      "id": "avena-trasnochada-brownie",
+      "hasPreparation": true,
+      "hasImage": true
     }
   ],
   "categories": [
@@ -1200,6 +1232,10 @@
     "local:71e37313-9674-498b-9bba-c9c5f48926aa": {
       "name": "Captura de pantalla 2026-07-12 a las 16.59.44.png",
       "file": "imported/71e37313-9674-498b-9bba-c9c5f48926aa.png"
+    },
+    "local:1c93a43b-390a-43e4-974c-cf21eceafec9": {
+      "name": "Avena trasnochada brownie.jpg",
+      "file": "imported/1c93a43b-390a-43e4-974c-cf21eceafec9.jpg"
     }
   }
 }
