@@ -43,18 +43,29 @@
       "name": "MERLUZA EN SALSA VERDE",
       "category": "PLATOS PRINCIPALES",
       "ingredients": [
-        "400 gr de lomos de merluza sin espinas (unos 4 o 5)",
-        "2 dientes de ajo picaditos",
-        "2 cucharadas de aceite de oliva virgen extra",
-        "1 cucharada sopera de harina (unos 20 gr)",
-        "100 ml de vino blanco",
-        "300 ml de caldo de pescado",
-        "20 gr de perejil fresco picadito",
-        "120 gr de guisantes en lata escurridos",
-        "Sal y pimienta negra al gusto"
+        "Lomos de merluza",
+        "Cebolleta 1",
+        "Dientes de ajo 2",
+        "Vino blanco 150 g",
+        "Caldo de pescado 200 g",
+        "Perejil picado",
+        "Sal",
+        "Harina o maicena 1 cucharada"
       ],
-      "preparation": [],
-      "images": [],
+      "preparation": [
+        "Picamos los ajos y doramos en una tartera con un poco de aceite de oliva.",
+        "Limpiamos la cebolleta, picamos y añadimos para saltear.",
+        "Incorporamos la cucharada de harina y removemos bien para que se rehogue.",
+        "Añadimos el vino y el caldo de pescado, mezclando todo bien.",
+        "Por último echamos el perejil y mezclamos.",
+        "Salpimentamos los lomos de merluza y colocamos en la tartera con la piel hacia abajo.",
+        "Hacemos 3-4 minutos por cada lado a fuego medio.",
+        "Servimos y espolvoreamos un poco de perejil por encima.",
+        "Información nutricional por ración: 248 kcal (12% VR). Hidratos 23% · Proteínas 65% · Grasas 12%. Grasas 3 g (4% VR), de las cuales saturadas 0,6 g (3% VR). Hidratos 12 g (5% VR), de los cuales azúcares 2,1 g (2% VR). Fibra 1,3 g (5% VR). Proteínas 34,3 g (69% VR). Sal 1,8 g (30% VR)."
+      ],
+      "images": [
+        "local:5166440e-70d0-4f4e-8b26-89a7aabe4271"
+      ],
       "web": "WEB Merluza en Salsa Verde | Receta de Pescado MUY Fácil y Deliciosa (youtube.com)",
       "tags": [
         "pescado",
@@ -62,8 +73,8 @@
         "rapido"
       ],
       "id": "merluza-en-salsa-verde",
-      "hasPreparation": false,
-      "hasImage": false
+      "hasPreparation": true,
+      "hasImage": true
     },
     {
       "name": "HUMMUS",
@@ -1063,6 +1074,34 @@
       "id": "mousse-de-cafe",
       "hasPreparation": true,
       "hasImage": true
+    },
+    {
+      "name": "Pollo cocido",
+      "category": "PLATOS PRINCIPALES",
+      "tags": [
+        "saludable",
+        "pollo",
+        "rapido"
+      ],
+      "seasons": [],
+      "images": [],
+      "ingredients": [
+        "Pechuga de pollo",
+        "Sal (pizca)",
+        "Diente de ajo 1 (machacado)",
+        "Hoja de laurel 1",
+        "Agua"
+      ],
+      "preparation": [
+        "Corta la pechuga: divídela por la mitad a lo largo (en dos filetes gruesos) para que se cocine el doble de rápido.",
+        "Hierve el agua con sabor: pon una olla pequeña con agua a fuego alto. Añade una pizca de sal, un diente de ajo machacado y una hoja de laurel.",
+        "Cocción exprés: cuando el agua esté hirviendo, introduce el pollo. Baja el fuego a nivel medio-bajo, tapa la olla y déjalo cocinar solo entre 8 y 10 minutos.",
+        "El truco final: apaga el fuego y deja el pollo reposar dentro del agua caliente (con la olla tapada) durante 3 minutos más. Al sacarlo, se deshará de lo tierno que queda."
+      ],
+      "web": null,
+      "id": "pollo-cocido",
+      "hasPreparation": true,
+      "hasImage": false
     }
   ],
   "categories": [
@@ -1310,6 +1349,10 @@
     "local:6942ef75-f482-4fc6-ac17-1c3574e436e8": {
       "name": "Mousse de cafe.png",
       "file": "imported/6942ef75-f482-4fc6-ac17-1c3574e436e8.png"
+    },
+    "local:5166440e-70d0-4f4e-8b26-89a7aabe4271": {
+      "name": "Merluza en salsa verde.png",
+      "file": "imported/5166440e-70d0-4f4e-8b26-89a7aabe4271.png"
     }
   }
 }
