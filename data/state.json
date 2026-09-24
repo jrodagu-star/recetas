@@ -1030,6 +1030,38 @@
       "id": "ensalada-de-lentejas",
       "hasPreparation": true,
       "hasImage": true
+    },
+    {
+      "name": "Mousse de café",
+      "category": "DEPORTE",
+      "tags": [
+        "saludable"
+      ],
+      "seasons": [],
+      "images": [
+        "local:6942ef75-f482-4fc6-ac17-1c3574e436e8"
+      ],
+      "ingredients": [
+        "Copos de avena 80 g (aprox. 1 taza)",
+        "Crema de arroz 40 g (unas 4 cucharadas soperas)",
+        "Semillas de chía 2 cucharadas soperas (unos 20 g)",
+        "Cacao puro en polvo 2 cucharadas de postre",
+        "Canela en polvo al gusto (2 pizcas generosas)",
+        "Café solo sin azúcar 2 tazas (unos 300-400 ml)",
+        "Proteína en polvo (sabor chocolate) 2 cazos (aprox. 60 g)"
+      ],
+      "preparation": [
+        "Mezcla todos los ingredientes secos en un bol grande.",
+        "Añade las dos tazas de café (caliente o del tiempo) y remueve de manera uniforme.",
+        "Integra los dos cazos de proteína.",
+        "Divide la mezcla en dos recipientes individuales y mételos en la nevera para que adquieran su consistencia final.",
+        "Toppings: nibs de cacao puro; frutos secos (almendras o nueces); semillas de cáñamo o de calabaza tostadas.",
+        "Información nutricional (aprox.): 415 kcal | Prot: 32 g | HC: 49 g | Grasas: 8,3 g | Alto en fibra."
+      ],
+      "web": null,
+      "id": "mousse-de-cafe",
+      "hasPreparation": true,
+      "hasImage": true
     }
   ],
   "categories": [
@@ -1273,6 +1305,10 @@
     "local:dc8c5432-edd0-43c9-ab0b-704c8e8d958a": {
       "name": "Ensalada de lentejas.png",
       "file": "imported/dc8c5432-edd0-43c9-ab0b-704c8e8d958a.png"
+    },
+    "local:6942ef75-f482-4fc6-ac17-1c3574e436e8": {
+      "name": "Mousse de cafe.png",
+      "file": "imported/6942ef75-f482-4fc6-ac17-1c3574e436e8.png"
     }
   }
 }
