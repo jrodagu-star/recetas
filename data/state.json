@@ -998,6 +998,38 @@
       "id": "avena-trasnochada-brownie",
       "hasPreparation": true,
       "hasImage": true
+    },
+    {
+      "name": "Ensalada de lentejas",
+      "category": "ENSALADAS",
+      "tags": [
+        "saludable"
+      ],
+      "seasons": [],
+      "images": [
+        "local:dc8c5432-edd0-43c9-ab0b-704c8e8d958a"
+      ],
+      "ingredients": [
+        "Yogur griego ligero 1",
+        "Mostaza 1 cucharada",
+        "Ajo en polvo",
+        "Sal",
+        "Huevo cocido 2",
+        "Lentejas cocidas",
+        "Pollo cocido",
+        "Tomates cherry",
+        "Lechugas varias"
+      ],
+      "preparation": [
+        "Poner 1 yogur griego ligero, 1 cucharada de mostaza, ajo en polvo y sal. Mezclarlo todo.",
+        "Añadir un huevo cocido y machacarlo.",
+        "Añadir las lentejas cocidas, el pollo cocido, los tomates cherry y las lechugas varias. Revolver todo.",
+        "Coronarlo con el otro huevo cocido."
+      ],
+      "web": null,
+      "id": "ensalada-de-lentejas",
+      "hasPreparation": true,
+      "hasImage": true
     }
   ],
   "categories": [
@@ -1008,6 +1040,7 @@
     "CONSEJOS",
     "CREMAS",
     "DEPORTE",
+    "ENSALADAS",
     "Panes",
     "PICOTEOS",
     "PIZZAS",
@@ -1236,6 +1269,10 @@
     "local:1c93a43b-390a-43e4-974c-cf21eceafec9": {
       "name": "Avena trasnochada brownie.jpg",
       "file": "imported/1c93a43b-390a-43e4-974c-cf21eceafec9.jpg"
+    },
+    "local:dc8c5432-edd0-43c9-ab0b-704c8e8d958a": {
+      "name": "Ensalada de lentejas.png",
+      "file": "imported/dc8c5432-edd0-43c9-ab0b-704c8e8d958a.png"
     }
   }
 }
